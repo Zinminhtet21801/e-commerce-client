@@ -4,12 +4,11 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons"
 const NavBar = () => {
-  console.log("OK");
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className={`container-fluid ${classes["container_nav"]}`}>
         <div className={`${classes.logo}`}>
-          <a className={`${classes["logo_text"]}`} href="#home">
+          <a className={`${classes["logo_text"]}`} href="/">
             E-Commerce
           </a>
         </div>

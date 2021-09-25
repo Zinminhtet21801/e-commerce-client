@@ -27,7 +27,6 @@ const responsive = {
 
 const Main = ({title, fetch}) => {
     const truncate = (str, n) => {
-        console.log(str,str.length);
         return str?.length > n ? str.substr(0, n - 1) + '...' : str
     }
 
@@ -46,7 +45,7 @@ const Main = ({title, fetch}) => {
                 <div className={main.image}>
                     <div className={main.hoverimage}>
                         <button className={`${main["wishlist_btn"]}`}>
-                        <FontAwesomeIcon icon={faHeart} className={`${main["fa_heart"]}`} />
+                            <FontAwesomeIcon icon={faHeart} className={`${main["fa_heart"]}`} />
                         </button>
                     </div>
                     <img src={product.image} alt={product.title}/>
@@ -66,7 +65,7 @@ const Main = ({title, fetch}) => {
         <React.Fragment>
         <div className={main.wrapper}>
             <h3>{title}</h3>
-            <h3>View All</h3>
+            <a href="/" className={`${main.viewall}`}>View All</a>
             <Carousel responsive={responsive} draggable={false}>
                 {products.map(productEntry)}
             </Carousel>
