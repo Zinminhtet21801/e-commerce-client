@@ -66,6 +66,7 @@ const Main = ({title, fetch}) => {
         <React.Fragment>
         <div className={main.wrapper}>
             <h3>{title}</h3>
+            <h3>View All</h3>
             <Carousel responsive={responsive} draggable={false}>
                 {products.map(productEntry)}
             </Carousel>
