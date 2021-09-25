@@ -4,7 +4,7 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons"
 import classes from "./SearchBox.module.css"
 
 const searchBoxBorderHover = {
-    borderColor: "rgb(214, 212, 55)"
+    borderColor: "#0071dc"
 }
 
 const SearchBox = () =>{

@@ -86,6 +86,12 @@ p {
 
 .price{
   font-weight: 700;
-  
+
 }
+
+.wrapper div button{
+  top: 70px;
+}
+
+
 

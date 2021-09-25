@@ -37,12 +37,12 @@ const NavBar = () => {
                 <a className="nav-link position-relative" href="/cart">
                   {/* <i class="fas fa-shopping-cart"></i> */}
                   <FontAwesomeIcon icon={faShoppingCart} className={classes.icon} />
-                  <span className="position-absolute top-0  translate-middle badge rounded-pill bg-secondary">
+                  <span className={`position-absolute top-0  translate-middle badge rounded-pill  ${classes["icon_text_bg"]}`}>
                     <span className="">10</span>
                   </span>
                 </a>
                 <a
-                  className="nav-link"
+                  className={`nav-link ${classes.account_text}`}
                   href="/account"
                   id="navbarDropdown"
                   role="button"
