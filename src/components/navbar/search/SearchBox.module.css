@@ -1,0 +1,35 @@
+.searchIconBox{
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-color: #ccc;
+    border-left-width: 0;
+    background-color: rgb(214, 212, 55);
+}
+
+.searchIconBox:hover{
+    background-color: rgb(235, 231, 8);
+}
+
+.searchInputBox{
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.searchInputBox:focus{
+    border-color: unset;
+    box-shadow: unset;
+}
+
+.searchForm{
+    
+}
+
+.icon{
+    color: white;
+}
+
+@media(min-width : 992px){
+    .searchForm{
+        width: 70%;
+    }
+}
