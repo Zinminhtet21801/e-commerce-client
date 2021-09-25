@@ -34,6 +34,13 @@ const NavBar = () => {
             <li className={`nav-item dropdown ${classes["navbar_li"]}`}>
               <div className={`${classes.middleNav}`}>
                 <SearchBox />
+                <a className="nav-link position-relative" href="/cart">
+                  {/* <i class="fas fa-shopping-cart"></i> */}
+                  <FontAwesomeIcon icon={faShoppingCart} className={classes.icon} />
+                  <span className="position-absolute top-0  translate-middle badge rounded-pill bg-secondary">
+                    <span className="">10</span>
+                  </span>
+                </a>
                 <a
                   className="nav-link"
                   href="/account"
@@ -43,14 +50,6 @@ const NavBar = () => {
                   aria-expanded="false"
                 >
                   My Account
-                </a>
-
-                <a className="nav-link position-relative" href="/cart">
-                  {/* <i class="fas fa-shopping-cart"></i> */}
-                  <FontAwesomeIcon icon={faShoppingCart} className={classes.icon} />
-                  <span className="position-absolute top-0  translate-middle badge rounded-pill bg-secondary">
-                    <span className="">10</span>
-                  </span>
                 </a>
               </div>
             </li>

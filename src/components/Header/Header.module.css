@@ -6,6 +6,7 @@
   margin: auto;
   margin-top: 16px;
   display: flex;
+  margin-bottom: 1rem;
 }
 .right_container{
   display: flex;
