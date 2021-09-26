@@ -1,9 +1,10 @@
 import React from 'react'
 
-const Viewall = () => {
+const Viewall = (props) => {
+    console.log(props.location.pathname);
     return (
         <React.Fragment>
-            <h1>Hello</h1>
+            <h1>HELLO</h1>
         </React.Fragment>
     )
 }

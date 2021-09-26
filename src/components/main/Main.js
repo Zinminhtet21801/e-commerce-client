@@ -3,7 +3,8 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Link
+    Link,
+    Redirect
 } from "react-router-dom"
 import axios from 'axios'
 import main from './Main.module.css'
@@ -12,6 +13,7 @@ import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 const responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.
@@ -68,20 +70,22 @@ const Main = ({title, fetch}) => {
     }
 
     return (
-        <Router>
-            <Switch>
-                <Route path={`/category${fetch}`} children={<Viewall />} />
-            </Switch>
+        // <Router>
+            /* <Switch>
+                <Route path={`/category${fetch}`} component={Viewall} />
+            </Switch> */
             <React.Fragment>
             <div className={main.wrapper}>
                 <h3>{title}</h3>
+                {console.log(fetch)}
+                {/* <Link to={`/category${fetch}`} className={`${main.viewall}`}>View All</Link> */}
                 <Link to={`/category${fetch}`} className={`${main.viewall}`}>View All</Link>
                 <Carousel responsive={responsive} draggable={false}>
                     {products.map(productEntry)}
                 </Carousel>
             </div>
             </React.Fragment>
-        </Router>
+        // </Router>
     )
 }
 
