@@ -1,6 +1,13 @@
 import React, {useState, useEffect} from 'react'
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+} from "react-router-dom"
 import axios from 'axios'
 import main from './Main.module.css'
+import Viewall from './Viewall';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
@@ -45,7 +52,7 @@ const Main = ({title, fetch}) => {
                 <div className={main.image}>
                     <div className={main.hoverimage}>
                         <button className={`${main["wishlist_btn"]}`}>
-                        <FontAwesomeIcon icon={faHeart} className={`${main["fa_heart"]}`} />
+                            <FontAwesomeIcon icon={faHeart} className={`${main["fa_heart"]}`} />
                         </button>
                     </div>
                     <img src={product.image} alt={product.title}/>
@@ -57,20 +64,24 @@ const Main = ({title, fetch}) => {
                 {/* <p>{product.title}</p> */}
                 </div>
             </div>
-            
         )
     }
 
     return (
-        <React.Fragment>
-        <div className={main.wrapper}>
-            <h3>{title}</h3>
-            <h3>View All</h3>
-            <Carousel responsive={responsive} draggable={false}>
-                {products.map(productEntry)}
-            </Carousel>
-        </div>
-        </React.Fragment>
+        <Router>
+            <Switch>
+                <Route path={`/category${fetch}`} children={<Viewall />} />
+            </Switch>
+            <React.Fragment>
+            <div className={main.wrapper}>
+                <h3>{title}</h3>
+                <Link to={`/category${fetch}`} className={`${main.viewall}`}>View All</Link>
+                <Carousel responsive={responsive} draggable={false}>
+                    {products.map(productEntry)}
+                </Carousel>
+            </div>
+            </React.Fragment>
+        </Router>
     )
 }
 

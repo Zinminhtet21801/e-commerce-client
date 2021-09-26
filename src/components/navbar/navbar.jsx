@@ -6,7 +6,6 @@ import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 const NavBar = () => {
-  console.log("OK");
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className={`container-fluid ${classes["container_nav"]}`}>
