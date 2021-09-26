@@ -27,7 +27,6 @@ const responsive = {
 
 const Main = ({title, fetch}) => {
     const truncate = (str, n) => {
-        console.log(str,str.length);
         return str?.length > n ? str.substr(0, n - 1) + '...' : str
     }
 

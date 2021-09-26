@@ -1,15 +1,17 @@
 import SearchBox from "./search/SearchBox";
 import classes from "./navbar.module.css";
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faShoppingCart } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+
 const NavBar = () => {
   console.log("OK");
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className={`container-fluid ${classes["container_nav"]}`}>
         <div className={`${classes.logo}`}>
-          <a className={`${classes["logo_text"]}`} href="#home">
+          <a className={`${classes["logo_text"]}`} href="/">
             E-Commerce
           </a>
         </div>
@@ -34,13 +36,21 @@ const NavBar = () => {
             <li className={`nav-item dropdown ${classes["navbar_li"]}`}>
               <div className={`${classes.middleNav}`}>
                 <SearchBox />
-                <a className="nav-link position-relative" href="/cart">
+                <a
+                  className={`nav-link position-relative ${classes.account_text}`}
+                  href="/cart"
+                >
                   {/* <i class="fas fa-shopping-cart"></i> */}
-                  <FontAwesomeIcon icon={faShoppingCart} className={classes.icon} />
-                  <span className={`position-absolute top-0  translate-middle badge rounded-pill  ${classes["icon_text_bg"]}`}>
+                  <FontAwesomeIcon
+                    icon={faShoppingCart}
+                    className={classes.icon}
+                  />
+                  <span
+                    className={`position-absolute top-0  translate-middle badge rounded-pill  ${classes["icon_text_bg"]}`}
+                  >
                     <span className="">10</span>
                   </span>
-                </a>
+                  </a>
                 <a
                   className={`nav-link ${classes.account_text}`}
                   href="/account"
