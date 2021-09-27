@@ -11,6 +11,8 @@ import {
   useLocation
 } from "react-router-dom";
 import Viewall from "./components/main/Viewall";
+import MyAccount from "./components/MyAccount/MyAccount";
+import Cart from "./components/Cart/Cart";
 
 const App = () => {
   return (
@@ -24,7 +26,9 @@ const App = () => {
             <Main title="Jewelery" fetch="/jewelery" />
             <Main title="Electronics" fetch="/electronics" />
           </Route>
+          <Route path="/account" component={MyAccount} />
           <Route path="/category" component={Viewall} />
+          <Route path="/cart" component={Cart} />
         </Switch>
       </React.Fragment>
     </Router>

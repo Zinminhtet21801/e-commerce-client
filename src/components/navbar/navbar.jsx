@@ -10,9 +10,9 @@ const NavBar = () => {
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className={`container-fluid ${classes["container_nav"]}`}>
         <div className={`${classes.logo}`}>
-          <a className={`${classes["logo_text"]}`} href="/">
+          <Link className={`${classes["logo_text"]}`} to="/">
             E-Commerce
-          </a>
+          </Link>
         </div>
         <button
           className="navbar-toggler"
@@ -35,9 +35,9 @@ const NavBar = () => {
             <li className={`nav-item dropdown ${classes["navbar_li"]}`}>
               <div className={`${classes.middleNav}`}>
                 <SearchBox />
-                <a
+                <Link
                   className={`nav-link position-relative ${classes.account_text}`}
-                  href="/cart"
+                  to="/cart"
                 >
                   {/* <i class="fas fa-shopping-cart"></i> */}
                   <FontAwesomeIcon
@@ -49,17 +49,17 @@ const NavBar = () => {
                   >
                     <span className="">10</span>
                   </span>
-                  </a>
-                <a
+                  </Link>
+                <Link
+                  to="/account"
                   className={`nav-link ${classes.account_text}`}
-                  href="/account"
                   id="navbarDropdown"
                   role="button"
-                  data-bs-toggle="dropdown"
+                  // data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
                   My Account
-                </a>
+                </Link>
               </div>
             </li>
           </ul>
