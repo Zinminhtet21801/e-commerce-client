@@ -1,14 +1,7 @@
 import React, {useState, useEffect} from 'react'
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link,
-    Redirect
-} from "react-router-dom"
+import { Link } from "react-router-dom"
 import axios from 'axios'
 import main from './Main.module.css'
-import Viewall from './Viewall';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
@@ -16,7 +9,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const responsive = {
     superLargeDesktop: {
-      // the naming can be any, depends on you.
       breakpoint: { max: 4000, min: 3000 },
       items: 5
     },
@@ -34,10 +26,12 @@ const responsive = {
     }
   };
 
-const Main = ({title, fetch}) => {
-    const truncate = (str, n) => {
-        return str?.length > n ? str.substr(0, n - 1) + '...' : str
-    }
+const truncate = (str, n) => {
+    return str?.length > n ? str.substr(0, n - 1) + '...' : str
+}
+
+const Main =  ({title, fetch}) => {
+
 
     const baseUrl = 'https://fakestoreapi.com/products/category'
     const [products, setProducts] = useState([])
@@ -63,29 +57,21 @@ const Main = ({title, fetch}) => {
                 <p className={main.price}>${product.price}</p>
                 <div className={`${main["product_description"]}`}>
                 <p>{truncate(product.title,80)}</p>
-                {/* <p>{product.title}</p> */}
                 </div>
             </div>
         )
     }
 
     return (
-        // <Router>
-            /* <Switch>
-                <Route path={`/category${fetch}`} component={Viewall} />
-            </Switch> */
-            <React.Fragment>
-            <div className={main.wrapper}>
-                <h3>{title}</h3>
-                {console.log(fetch)}
-                {/* <Link to={`/category${fetch}`} className={`${main.viewall}`}>View All</Link> */}
-                <Link to={`/category${fetch}`} className={`${main.viewall}`}>View All</Link>
-                <Carousel responsive={responsive} draggable={false}>
-                    {products.map(productEntry)}
-                </Carousel>
-            </div>
-            </React.Fragment>
-        // </Router>
+        <React.Fragment>
+        <div className={main.wrapper}>
+            <h3>{title}</h3>
+            <Link to={`/category${fetch}`} className={`${main.viewall}`}>View All</Link>
+            <Carousel responsive={responsive} draggable={false}>
+                {products.map(productEntry)}
+            </Carousel>
+        </div>
+        </React.Fragment>
     )
 }
 
