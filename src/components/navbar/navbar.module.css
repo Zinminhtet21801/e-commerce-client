@@ -1,79 +1,76 @@
-.account_text{
-    font-size: 1.1rem;
+.account_text {
+  font-size: 1.1rem;
 }
 
-
-.navbar_ul{
-    width: 100%;
-    display: flex;
-    justify-content: flex-start;
+.navbar_ul {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
 }
 
-.navbar_li{
-    width: 70%;
+.navbar_li {
+  width: 70%;
 }
 
-
-.container_nav{
-    padding: 8px;
+.container_nav {
+  padding: 8px;
 }
 
-.logo{
-    margin-right: 0;
-    width: 200px;
-    margin-left: 20%;
+.logo {
+  margin-right: 0;
+  width: 200px;
+  margin-left: 20%;
 }
 
-.middleNav{
-    display: flex;
-    justify-content: space-evenly;
+.middleNav {
+  display: flex;
+  justify-content: space-evenly;
 }
 
-.logo_text{
-    width: 100%;
-    color: rgba(232, 230, 227, 0.9);
-    text-decoration-color: initial;
-    padding-top: .3125rem;
-    padding-bottom: .3125rem;
-    font-size: 1.5rem;
-    text-decoration: none;
-    white-space: nowrap;
-    cursor: pointer;
-    font-weight: 500;
-    color: #0071dc;
+.logo_text {
+  width: 100%;
+  color: rgba(232, 230, 227, 0.9);
+  text-decoration-color: initial;
+  padding-top: 0.3125rem;
+  padding-bottom: 0.3125rem;
+  font-size: 1.5rem;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  font-weight: 500;
+  color: #0071dc;
 }
 
-.icon_text_bg{
-    background-color: #0071dc;
+.icon_text_bg {
+  background-color: #0071dc;
 }
 
-.icon{
-    font-size: 1.5rem;
+.icon {
+  font-size: 1.5rem;
 }
 
 /* .logo_text:hover{
     color: rgba(232, 230, 227, 1);
 } */
 
+@media (max-width: 992px) {
+  .middleNav {
+    flex-direction: column;
+  }
+  .logo {
+    margin-right: 0;
+    /* width: 200px; */
+  }
+  .navbar_li {
+    padding-top: 8px;
+    margin-left: 10%;
+  }
 
-@media(max-width : 992px){
-    .middleNav{
-        flex-direction: column;
-    }
-    .logo{
-        margin-right: 0;
-        /* width: 200px; */
-    }
-    .navbar_li{
-        padding-top: 8px;
-       margin-left: 10%;
-    }
+  .account_text:last-child {
+    margin-top: 0;
+  }
 
-    .account_text:last-child{
-        margin-top: 0;
-    }
-
-    .account_text{
-        margin-top: 15px;
-    }
+  .account_text {
+    margin-top: 15px;
+  }
 }

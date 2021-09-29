@@ -4,25 +4,35 @@ import axios from 'axios'
 import classes from './Viewall.module.css'
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Pagination } from '@mui/material'
 
 
 const truncate = (str, n) => {
     return str?.length > n ? str.substr(0, n - 1) + '...' : str
 }
 
-
 const Viewall = () => {
     const [products, setProducts] = useState([])
+    const [currentPage, setCurrentPage] = useState(1);
+    const [productsPerPage] = useState(10);
+
+    const indexOfLastProduct = currentPage * productsPerPage
+    const indexOffirstProduct = indexOfLastProduct - productsPerPage
     const url = useParams()
     const { category } = url
     useEffect(() => {
         axios
             .get(`https://fakestoreapi.com/products/category/${category}`)
-            .then(res => setProducts(res.data))
+            .then(res => {
+                setProducts(res.data)
+            })
             .catch(err => console.log(`err in getting viewall -> ${err}`))
     },[category])
 
-
+    // Pagination
+    const handlePaginationChange = (e, value) => {
+        setCurrentPage(value)
+    }
 
     const productEntry = (product) => {
         return (
@@ -49,8 +59,9 @@ const Viewall = () => {
                 <button className={`btn btn-outline-primary`}>Sort</button>
             </div>
             <div className={classes.products}>
-                {products.map(productEntry)}
+                {products.slice(indexOffirstProduct, indexOfLastProduct).map(productEntry)}
             </div>
+            <Pagination count={Math.ceil(products.length/productsPerPage)} page={currentPage} onChange={handlePaginationChange} color="primary" style={{display: 'flex', justifyContent: 'center', marginBottom: '20px'}}/>
         </React.Fragment>
     )
 }
