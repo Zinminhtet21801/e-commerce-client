@@ -70,7 +70,7 @@ const Viewall = () => {
                 </Select>
             </div>
             <div className={classes.products}>
-                { sort === 'none' && products.slice(indexOffirstProduct, indexOfLastProduct).map(productEntry)}
+                { sort === 'none' && products.sort((a, b) => a.id - b.id).slice(indexOffirstProduct, indexOfLastProduct).map(productEntry)}
                 { sort === 'lowtohigh' && products.sort((a, b) => a.price - b.price).slice(indexOffirstProduct, indexOfLastProduct).map(productEntry)}
                 { sort === 'hightolow' && products.sort((a, b) => b.price - a.price).slice(indexOffirstProduct, indexOfLastProduct).map(productEntry)}
             </div>
