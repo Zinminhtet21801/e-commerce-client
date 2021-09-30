@@ -2,9 +2,10 @@ import React, {useEffect, useState} from 'react'
 import { useParams } from 'react-router';
 import axios from 'axios'
 import classes from './Viewall.module.css'
+import { MenuItem, InputLabel} from '@mui/material/';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Pagination } from '@mui/material'
+import { Pagination, Select } from '@mui/material'
 
 
 const truncate = (str, n) => {
@@ -15,6 +16,7 @@ const Viewall = () => {
     const [products, setProducts] = useState([])
     const [currentPage, setCurrentPage] = useState(1);
     const [productsPerPage] = useState(10);
+    const [sort, setSort ] = useState('none');
 
     const indexOfLastProduct = currentPage * productsPerPage
     const indexOffirstProduct = indexOfLastProduct - productsPerPage
@@ -32,6 +34,11 @@ const Viewall = () => {
     // Pagination
     const handlePaginationChange = (e, value) => {
         setCurrentPage(value)
+    }
+
+    // Select 
+    const handleSelectChange = e => {
+        setSort(e.target.value)
     }
 
     const productEntry = (product) => {
@@ -54,12 +61,18 @@ const Viewall = () => {
     }
     return (
         <React.Fragment>
-            <div className={`${classes.buttons}`}>
-                <button className={`btn btn-outline-primary`}>Filter</button>
-                <button className={`btn btn-outline-primary`}>Sort</button>
+            <div className={classes.sort}>
+                <InputLabel id="label">Sort</InputLabel>
+                <Select autoWidth={true} labelId="label" label="Sort" defaultValue="none" onChange={handleSelectChange}>
+                    <MenuItem value={"none"}>None</MenuItem>
+                    <MenuItem value={"lowtohigh"}>Low - High</MenuItem>
+                    <MenuItem value={"hightolow"}>High - Low</MenuItem>
+                </Select>
             </div>
             <div className={classes.products}>
-                {products.slice(indexOffirstProduct, indexOfLastProduct).map(productEntry)}
+                { sort === 'none' && products.slice(indexOffirstProduct, indexOfLastProduct).map(productEntry)}
+                { sort === 'lowtohigh' && products.sort((a, b) => a.price - b.price).slice(indexOffirstProduct, indexOfLastProduct).map(productEntry)}
+                { sort === 'hightolow' && products.sort((a, b) => b.price - a.price).slice(indexOffirstProduct, indexOfLastProduct).map(productEntry)}
             </div>
             <Pagination count={Math.ceil(products.length/productsPerPage)} page={currentPage} onChange={handlePaginationChange} color="primary" style={{display: 'flex', justifyContent: 'center', marginBottom: '20px'}}/>
         </React.Fragment>
