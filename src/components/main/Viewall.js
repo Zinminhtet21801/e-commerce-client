@@ -4,7 +4,7 @@ import axios from 'axios'
 import classes from './Viewall.module.css'
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
+import { Link } from 'react-router-dom';
 
 const truncate = (str, n) => {
     return str?.length > n ? str.substr(0, n - 1) + '...' : str
@@ -26,7 +26,8 @@ const Viewall = () => {
 
     const productEntry = (product) => {
         return (
-            <div key={product.id} className={`${classes.productEntry}`} style={{borderWidth : "0"}}>
+            <Link to={`/category/${product.category}/${product.id}`} className={`${classes["category_link"]}`}>
+                <div key={product.id} className={`${classes.productEntry}`} style={{borderWidth : "0"}}>
                 <div className={classes.image}>
                     <div className={classes.hoverimage}>
                         <button className={`${classes["wishlist_btn"]}`}>
@@ -40,6 +41,7 @@ const Viewall = () => {
                     <p>{truncate(product.title,80)}</p>
                 </div>
             </div>
+            </Link>
         )
     }
     return (

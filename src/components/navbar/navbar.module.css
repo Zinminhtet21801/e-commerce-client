@@ -1,5 +1,10 @@
+.container_outer_nav{
+    background-color: #0071dc;
+}
 .account_text{
     font-size: 1.1rem;
+    color: #fff;
+    font-weight: 700;
 }
 
 
@@ -31,7 +36,7 @@
 
 .logo_text{
     width: 100%;
-    color: rgba(232, 230, 227, 0.9);
+    color: #fff;
     text-decoration-color: initial;
     padding-top: .3125rem;
     padding-bottom: .3125rem;
@@ -40,15 +45,15 @@
     white-space: nowrap;
     cursor: pointer;
     font-weight: 500;
-    color: #0071dc;
 }
 
 .icon_text_bg{
-    background-color: #0071dc;
+    background-color: #ffc220;
 }
 
 .icon{
     font-size: 1.5rem;
+    color: #fff;
 }
 
 /* .logo_text:hover{

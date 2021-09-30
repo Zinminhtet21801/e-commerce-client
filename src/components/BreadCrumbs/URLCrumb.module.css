@@ -1,0 +1,29 @@
+a{
+    cursor: pointer;
+}
+
+.breadcrumbs{
+    background-color: #ccc;
+    padding: 1rem 0 1rem 20%;
+    background-color: rgb(0, 63, 123);
+}
+
+.crumbs_link{
+    color: #fff;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.crumbs_link:hover{
+    color: #fff;
+}
+
+/* .crumbs_link:hover{
+    color: rgba(255, 255, 231, 1);
+} */
+
+@media(max-width : 992px){
+    .breadcrumbs{
+        padding: 1rem 0 1rem 5%;
+    }
+}

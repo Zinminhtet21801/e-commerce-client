@@ -7,7 +7,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 const NavBar = () => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav className={`navbar navbar-expand-lg ${classes["container_outer_nav"]}`}>
       <div className={`container-fluid ${classes["container_nav"]}`}>
         <div className={`${classes.logo}`}>
           <Link className={`${classes["logo_text"]}`} to="/">

@@ -44,7 +44,8 @@ const Main =  ({title, fetch}) => {
 
     const productEntry = (product) => {
         return (
-            <div key={product.id} className={`${main.productEntry} card`} style={{borderWidth : "0"}}>
+            <Link to={`/category${fetch}/${product.id}`} key={product.id} style={{textDecoration : "none"}}>
+                <div key={product.id} className={`${main.productEntry} card`} style={{borderWidth : "0"}}>
                 <div className={main.image}>
                     <div className={main.hoverimage}>
                         <button className={`${main["wishlist_btn"]}`}>
@@ -59,6 +60,7 @@ const Main =  ({title, fetch}) => {
                 <p>{truncate(product.title,80)}</p>
                 </div>
             </div>
+            </Link>
         )
     }
 

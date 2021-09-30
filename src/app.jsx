@@ -6,6 +6,8 @@ import Viewall from "./components/main/Viewall"
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 import MyAccount from "./components/MyAccount/MyAccount"
 import Cart from "./components/Cart/Cart"
+import ItemDetail from "./components/ItemDetail/ItemDetail"
+import Footer from "./components/Footer/Footer"
 const App = () =>{
     return (
         <Router>
@@ -18,10 +20,12 @@ const App = () =>{
                     <Main title="Jewelery" fetch="/jewelery" />
                     <Main title="Electronics" fetch="/electronics" />
                 </Route>
-                <Route path="/category/:category" component={Viewall}/>
+                <Route exact path="/category/:category" component={Viewall}/>
+                <Route path={`/category/:category/:id`} component={ItemDetail} />
                 <Route path="/account" component={MyAccount} />
                 <Route path="/cart" component={Cart} />
                 </Switch>
+                <Footer />
             </React.Fragment>
         </Router>
     )

@@ -8,6 +8,10 @@
   margin-right: 10px;
 }
 
+.category_link{
+  text-decoration: none;
+}
+
 .products {
   display: flex;
   flex-flow: wrap;
