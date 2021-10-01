@@ -84,3 +84,14 @@
 .product_description p {
   color: #454545;
 }
+
+/* Sort */
+.sort {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-right: 430px;
+  margin-top: 40px;
+  margin-left: 70%;
+  margin-bottom: 30px;
+}

@@ -3,11 +3,11 @@
     border-bottom-left-radius: 0;
     border-color: #0071dc;
     border-left-width: 0;
-    background-color: #0071dc;
+    background-color: #ffc320e3;
 }
 
 .searchIconBox:hover{
-    background-color: #004f9a;
+    background-color: #ffc320;
 }
 
 .searchInputBox{

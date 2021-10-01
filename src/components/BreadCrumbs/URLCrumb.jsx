@@ -11,14 +11,15 @@ import App from "../../app";
 
 const URLCrumb = (props) => {
   const url = props.url;
-  const separatedURL = url.split("/").splice(2);
+  const separatedURL = url.split("/")
+  separatedURL[0] = "home"
 //   const { id } = useParams();
   let urlArray = [];
   const breadcrumbs = separatedURL.map((data, index) => {
     urlArray.push(`${separatedURL[index]}`);
     return index !== separatedURL.length - 1 ? (
       <Link
-        to={`/category/${urlArray.join("/")}`}
+        to={`/${urlArray.join("/")}`}
         underline="hover"
         key={separatedURL.indexOf(data.id)}
         color="inherit"

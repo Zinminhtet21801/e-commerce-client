@@ -8,18 +8,20 @@ import MyAccount from "./components/MyAccount/MyAccount"
 import Cart from "./components/Cart/Cart"
 import ItemDetail from "./components/ItemDetail/ItemDetail"
 import Footer from "./components/Footer/Footer"
+import Category from "./components/Category/Category"
 const App = () =>{
     return (
         <Router>
             <React.Fragment>
                 <NavBar />
                 <Switch>
-                <Route exact path="/">
+                <Route exact path={["/","/home"]}>
                 <Header />
                     <Main title="Women's Clothing" fetch="/women's clothing" />
                     <Main title="Jewelery" fetch="/jewelery" />
                     <Main title="Electronics" fetch="/electronics" />
                 </Route>
+                <Route exact path={["/category","/home/category"]} component={Category} />
                 <Route exact path="/category/:category" component={Viewall}/>
                 <Route path={`/category/:category/:id`} component={ItemDetail} />
                 <Route path="/account" component={MyAccount} />
