@@ -22,7 +22,7 @@ const App = () =>{
                     <Main title="Electronics" fetch="/electronics" />
                 </Route>
                 <Route exact path={["/category","/home/category"]} component={Category} />
-                <Route exact path="/category/:category" component={Viewall}/>
+                <Route exact path="/home/category/:category" component={Viewall}/>
                 <Route path={`/category/:category/:id`} component={ItemDetail} />
                 <Route path="/account" component={MyAccount} />
                 <Route path="/cart" component={Cart} />
