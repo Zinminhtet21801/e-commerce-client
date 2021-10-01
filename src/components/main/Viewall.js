@@ -7,12 +7,13 @@ import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Pagination, Select } from '@mui/material'
 import { Link } from 'react-router-dom';
+import URLCrumb from '../BreadCrumbs/URLCrumb';
 
 const truncate = (str, n) => {
     return str?.length > n ? str.substr(0, n - 1) + '...' : str
 }
 
-const Viewall = () => {
+const Viewall = (props) => {
     const [products, setProducts] = useState([])
     const [currentPage, setCurrentPage] = useState(1);
     const [productsPerPage] = useState(10);
@@ -63,6 +64,7 @@ const Viewall = () => {
     }
     return (
         <React.Fragment>
+        <URLCrumb url={(props.location.pathname).split("/").splice(1).join("/")} />
             <div className={classes.sort}>
                 <InputLabel id="label">Sort</InputLabel>
                 <Select autoWidth={true} labelId="label" label="Sort" defaultValue="none" onChange={handleSelectChange}>

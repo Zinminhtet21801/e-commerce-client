@@ -68,7 +68,7 @@ const Main =  ({title, fetch}) => {
         <React.Fragment>
         <div className={main.wrapper}>
             <h3>{title}</h3>
-            <Link to={`/category${fetch}`} className={`${main.viewall}`}>View All</Link>
+            <Link to={`/home/category${fetch}`} className={`${main.viewall}`}>View All</Link>
             <Carousel responsive={responsive} draggable={false}>
                 {products.map(productEntry)}
             </Carousel>
