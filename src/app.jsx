@@ -23,9 +23,9 @@ const App = () =>{
                 </Route>
                 <Route exact path={["/category","/home/category"]} component={Category} />
                 <Route exact path="/home/category/:category" component={Viewall}/>
-                <Route path={`/category/:category/:id`} component={ItemDetail} />
-                <Route path="/account" component={MyAccount} />
-                <Route path="/cart" component={Cart} />
+                <Route exact path={`/category/:category/:id`} component={ItemDetail} />
+                <Route exact path="/account" component={MyAccount} />
+                <Route exact path="/cart" component={Cart} />
                 </Switch>
                 <Footer />
             </React.Fragment>

@@ -1,0 +1,38 @@
+.page_text{
+    font-size: 28px;
+    font-weight: 700;
+    margin-left: calc(100vw - 85vw);
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+}
+
+.inner_container{
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    margin: auto;
+}
+
+.email_container{
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.btn_container{
+    margin: 25px auto;
+}
+
+.btn_container button{
+    margin-right: 25px;
+    margin-bottom: 8px;
+}
+
+@media(max-width : 576px){
+    .btn_container button{
+        width: 100%;
+    }
+}

@@ -10,7 +10,6 @@ import { Link } from "react-router-dom";
 import App from "../../app";
 
 const URLCrumb = (props) => {
-  console.log(props.url);
   const url = props.url;
   const separatedURL = url.split("/")
   separatedURL[0] = "home"
