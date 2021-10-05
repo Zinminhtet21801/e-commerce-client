@@ -1,20 +1,14 @@
 import React from "react";
-import Carousel from "react-multi-carousel";
-import { useParams } from "react-router";
 import Breadcrumbs from "@mui/material/Breadcrumbs";
 import Typography from "@mui/material/Typography";
-// import Link from "@mui/material/Link";
 import Stack from "@mui/material/Stack";
 import classes from "./URLCrumb.module.css";
 import { Link } from "react-router-dom";
-import App from "../../app";
 
 const URLCrumb = (props) => {
-  console.log(props.url);
   const url = props.url;
   const separatedURL = url.split("/")
   separatedURL[0] = "home"
-//   const { id } = useParams();
   let urlArray = [];
   const breadcrumbs = separatedURL.map((data, index) => {
     urlArray.push(`${separatedURL[index]}`);

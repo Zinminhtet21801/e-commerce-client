@@ -3,8 +3,8 @@
   color: #fff;
 }
 
-.container_outer_nav{
-    background-color: #0071dc;
+.container_outer_nav {
+  background-color: #0071dc;
 }
 
 .navbar_ul {
@@ -45,8 +45,8 @@
   color: #fff;
 }
 
-.logo_text:hover{
-    color: #fff;
+.logo_text:hover {
+  color: #fff;
 }
 
 .icon_text_bg {
@@ -54,7 +54,7 @@
 }
 
 .icon {
-  font-size: 1.5rem;
+  font-size: 2rem;
   color: #fff;
 }
 

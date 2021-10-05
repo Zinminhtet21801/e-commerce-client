@@ -4,8 +4,7 @@ import axios from 'axios'
 import main from './Main.module.css'
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import { faHeart } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
 const responsive = {
     superLargeDesktop: {
@@ -49,7 +48,7 @@ const Main =  ({title, fetch}) => {
                 <div className={main.image}>
                     <div className={main.hoverimage}>
                         <button className={`${main["wishlist_btn"]}`}>
-                            <FontAwesomeIcon icon={faHeart} className={`${main["fa_heart"]}`} />
+                            <FavoriteIcon sx={{ fontSize: 40 }} className={`${main["fa_heart"]}`} />
                         </button>
                     </div>
                     <img src={product.image} alt={product.title}/>
