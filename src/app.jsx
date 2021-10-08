@@ -9,6 +9,7 @@ import Cart from "./components/Cart/Cart"
 import ItemDetail from "./components/ItemDetail/ItemDetail"
 import Footer from "./components/Footer/Footer"
 import Category from "./components/Category/Category"
+import Signup from "./components/Signup/Signup"
 const App = () =>{
 
     const [cartItems, setCartItems] = useState([]);
@@ -40,6 +41,7 @@ const App = () =>{
                     <ItemDetail location={`/category/:category/:id`} onAdd={onAdd}/>
                 </Route>
                 <Route path="/account" component={MyAccount} />
+                <Route path="/signup" component={Signup} />
                 <Route path="/cart">
                     <Cart cartItems={cartItems} />
                 </Route>

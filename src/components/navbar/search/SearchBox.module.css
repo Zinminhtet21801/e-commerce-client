@@ -1,35 +1,32 @@
-.searchIconBox{
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-    border-color: #0071dc;
-    border-left-width: 0;
-    background-color: #ffc320e3;
+.searchIconBox {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-color: #0071dc;
+  border-left-width: 0;
+  background-color: #ffc320e3;
 }
 
-.searchIconBox:hover{
-    background-color: #ffc320;
+.searchIconBox:hover {
+  background-color: #ffc320;
 }
 
-.searchInputBox{
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
+.searchInputBox {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-color: transparent;
 }
 
-.searchInputBox:focus{
-    border-color: unset;
-    box-shadow: unset;
+.searchInputBox:focus {
+  border-color: unset;
+  box-shadow: unset;
 }
 
-.searchForm{
-    
+.icon {
+  color: white;
 }
 
-.icon{
-    color: white;
-}
-
-@media(min-width : 992px){
-    .searchForm{
-        width: 70%;
-    }
+@media (min-width: 992px) {
+  .searchForm {
+    width: 70%;
+  }
 }
