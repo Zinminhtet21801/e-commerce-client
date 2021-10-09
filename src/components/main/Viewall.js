@@ -3,8 +3,7 @@ import { useParams } from 'react-router';
 import axios from 'axios'
 import classes from './Viewall.module.css'
 import { MenuItem, InputLabel} from '@mui/material/';
-import { faHeart } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 import { Pagination, Select } from '@mui/material'
 import { Link } from 'react-router-dom';
 import URLCrumb from '../BreadCrumbs/URLCrumb';
@@ -44,12 +43,12 @@ const Viewall = (props) => {
 
     const productEntry = (product) => {
         return (
-            <Link to={`/category/${product.category}/${product.id}`} className={`${classes["category_link"]}`}>
-                <div key={product.id} className={`${classes.productEntry}`} style={{borderWidth : "0"}}>
+            <Link to={`/category/${product.category}/${product.id}`} className={`${classes["category_link"]}`}  key={product.id} >
+                <div className={`${classes.productEntry}`} style={{borderWidth : "0"}}>
                 <div className={classes.image}>
                     <div className={classes.hoverimage}>
                         <button className={`${classes["wishlist_btn"]}`}>
-                            <FontAwesomeIcon icon={faHeart} className={`${classes["fa_heart"]}`} />
+                            <FavoriteIcon sx={{ fontSize: 40 }} className={`${classes["fa_heart"]}`} />
                         </button>
                     </div>
                     <img src={product.image} alt={product.title}/>

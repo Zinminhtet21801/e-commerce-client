@@ -1,0 +1,19 @@
+.email_container{
+    display: flex;
+    flex-direction: column;
+}
+
+.page_text{
+    font-size: 28px;
+    font-weight: 700;
+    /* margin-left: calc(100vw - 85vw); */
+}
+
+.info_container{
+    position: relative;
+}
+
+.edit_text{
+    position: absolute;
+    right: 0;
+}

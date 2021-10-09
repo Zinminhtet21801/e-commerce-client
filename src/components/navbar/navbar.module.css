@@ -1,20 +1,28 @@
 .account_text {
   font-size: 1.1rem;
+  display: inline;
+  font-weight: 400;
 }
 
-.container_outer_nav{
-    background-color: #0071dc;
+
+.container_outer_nav {
+  background-color: #0071dc;
+  padding: 20px 0;
 }
 
 .navbar_ul {
   width: 100%;
   display: flex;
-  justify-content: flex-start;
 }
 
-.navbar_li {
-  width: 70%;
+.navbar_li:first-child {
+  width: 50%;
 }
+
+.navbar_li{
+  margin-right: 20px;
+}
+
 
 .container_nav {
   padding: 8px;
@@ -44,8 +52,8 @@
   color: #fff;
 }
 
-.logo_text:hover{
-    color: #fff;
+.logo_text:hover {
+  color: #fff;
 }
 
 .icon_text_bg {
@@ -53,7 +61,7 @@
 }
 
 .icon {
-  font-size: 1.5rem;
+  font-size: 2rem;
   color: #fff;
 }
 
@@ -61,7 +69,7 @@
     color: rgba(232, 230, 227, 1);
 } */
 
-@media (max-width: 992px) {
+@media (max-width: 991px) {
   .middleNav {
     flex-direction: column;
   }
@@ -79,6 +87,15 @@
   }
 
   .account_text {
-    margin-top: 15px;
+    display: block;
+  }
+
+  .navbar_li:nth-child(2){
+    margin-top: 20px;
+  }
+
+  .navbar_li:first-child {
+    width: 80%;
   }
 }
+

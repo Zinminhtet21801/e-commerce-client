@@ -1,0 +1,94 @@
+.roww {
+  margin: 20px 0 20px 0;
+  text-align: center;
+}
+
+.image {
+  width: 100px;
+  height: 100px;
+}
+
+.product__title {
+  font-size: 1rem;
+  color: rgb(166, 165, 163);
+}
+
+.text {
+  padding-top: 35px;
+  letter-spacing: 3px;
+}
+
+.checkout {
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  max-width: 400px;
+  margin-left: 50px;
+  margin-top: 20px;
+  padding: 1.5rem;
+}
+
+.buttons {
+  margin-top: 50px;
+}
+
+.buttons__checkout {
+  color: #000000;
+  background-color: #ffffff;
+  border: #000000 solid 1px;
+  padding: 10px;
+  margin-left: 10px;
+  transition: ease-out 0.2s;
+}
+
+.buttons__checkout:hover {
+  color: #ffffff;
+  background-color: #000000;
+  border: #ffffff solid 1px;
+  padding: 10px;
+  margin-left: 10px;
+}
+
+.buttons__clear {
+  color: #000000;
+  background-color: #ffffff;
+  border: #000000 solid 1px;
+  padding: 10px;
+  margin-left: 10px;
+  transition: ease-out 0.2s;
+}
+
+.buttons__clear:hover {
+  color: #ffffff;
+  background-color: #000000;
+  border: #ffffff solid 1px;
+  padding: 10px;
+  margin-left: 10px;
+}
+
+.qty__add {
+  display: inline;
+  margin: auto 10px;
+}
+
+.qty__minus {
+  display: inline;
+  margin: auto 10px;
+}
+
+@media (max-width: 598px) {
+  .row {
+    margin-bottom: 50px;
+  }
+  .text {
+    padding-top: 0px;
+  }
+  .checkout {
+    margin-left: 0px;
+    max-width: none;
+  }
+}
+
+@media (max-width: 814px) {
+  .buttons__checkout {
+    margin-bottom: 5px;
+  }
+}

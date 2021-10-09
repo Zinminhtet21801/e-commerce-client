@@ -1,4 +1,4 @@
-import React from "react"
+import React,{useState} from "react"
 import Header from "./components/Header/Header"
 import NavBar from "./components/navbar/navbar"
 import Main from "./components/main/Main"
@@ -9,11 +9,25 @@ import Cart from "./components/Cart/Cart"
 import ItemDetail from "./components/ItemDetail/ItemDetail"
 import Footer from "./components/Footer/Footer"
 import Category from "./components/Category/Category"
+import OrderHistorySegment from "./components/MyAccount/Segments/OrderHistorySegment"
 const App = () =>{
+
+    const [cartItems, setCartItems] = useState([]);
+    const onAdd = item => {
+        const itemExist = cartItems?.find(product => product.id === item.id)
+        if (itemExist) {
+            setCartItems(
+                cartItems.map(product => product.id === item.id ? {...itemExist, qty: itemExist.qty + item.qty} : product)
+            )
+        } else {
+            setCartItems(prevItem =>[...prevItem, item])
+        }
+    }
+
     return (
         <Router>
             <React.Fragment>
-                <NavBar />
+                <NavBar cartItems={cartItems}/>
                 <Switch>
                 <Route exact path={["/","/home"]}>
                 <Header />
@@ -23,9 +37,13 @@ const App = () =>{
                 </Route>
                 <Route exact path={["/category","/home/category"]} component={Category} />
                 <Route exact path="/home/category/:category" component={Viewall}/>
-                <Route exact path={`/category/:category/:id`} component={ItemDetail} />
-                <Route exact path="/account" component={MyAccount} />
-                <Route exact path="/cart" component={Cart} />
+                <Route path={`/category/:category/:id`}>
+                    <ItemDetail location={`/category/:category/:id`} onAdd={onAdd}/>
+                </Route>
+                <Route path="/my account" component={MyAccount} />
+                <Route path="/cart">
+                    <Cart cartItems={cartItems} />
+                </Route>
                 </Switch>
                 <Footer />
             </React.Fragment>

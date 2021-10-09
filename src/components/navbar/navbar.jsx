@@ -1,13 +1,14 @@
 import SearchBox from "./search/SearchBox";
 import classes from "./navbar.module.css";
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { Link } from "react-router-dom";
 
-const NavBar = () => {
+const NavBar = ({cartItems}) => {
+  let qty = 0;
+  cartItems.map(item => qty+=item.qty)
   return (
-    <nav className={`navbar navbar-expand-lg navbar-light ${classes["container_outer_nav"]}`}>
+    <nav className={`navbar navbar-light navbar-expand-lg ${classes["container_outer_nav"]}`}>
       <div className={`container-fluid ${classes["container_nav"]}`}>
         <div className={`${classes.logo}`}>
           <Link className={`${classes["logo_text"]}`} to="/">
@@ -33,35 +34,31 @@ const NavBar = () => {
             className={`navbar-nav me-auto ms-auto mb-2 mb-lg-0 ${classes["navbar_ul"]}`}
           >
             <li className={`nav-item dropdown ${classes["navbar_li"]}`}>
-              <div className={`${classes.middleNav}`}>
+              {/* <div className={`${classes.middleNav}`}> */}
                 <SearchBox />
-                <Link
+              {/* </div> */}
+            </li>
+            <li className={`nav-item dropdown ${classes["navbar_li"]}`}>
+            <Link
                   className={`nav-link position-relative ${classes.account_text}`}
                   to="/cart"
                 >
-                  {/* <i class="fas fa-shopping-cart"></i> */}
-                  <FontAwesomeIcon
-                    icon={faShoppingCart}
-                    className={classes.icon}
-                  />
+                  <ShoppingCartIcon sx={{fontSize: 33}} className={classes.icon}/>
                   <span
                     className={`position-absolute top-0  translate-middle badge rounded-pill  ${classes["icon_text_bg"]}`}
                   >
-                    <span className="">10</span>
+                    <span className="">{qty}</span>
                   </span>
                   </Link>
-                <Link
-                  to="/account"
+            </li>
+            <li className={`nav-item dropdown ${classes["navbar_li"]}`}>
+            <Link
+                  to="/my account"
                   className={`nav-link ${classes.account_text}`}
-                  id="navbarDropdown"
-                  role="button"
-                  // data-bs-toggle="dropdown"
-                  aria-expanded="false"
                   color="#fff"
                 >
                   My Account
                 </Link>
-              </div>
             </li>
           </ul>
         </div>

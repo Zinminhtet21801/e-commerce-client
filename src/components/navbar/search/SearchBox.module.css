@@ -13,6 +13,7 @@
 .searchInputBox{
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
+    height: auto;
 }
 
 .searchInputBox:focus{
@@ -21,15 +22,15 @@
 }
 
 .searchForm{
-    
+    width: 100%;
 }
 
 .icon{
     color: white;
 }
 
-@media(min-width : 992px){
+@media(max-width : 992px){
     .searchForm{
-        width: 70%;
+        /* width: 70%; */
     }
 }
