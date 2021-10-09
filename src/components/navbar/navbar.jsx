@@ -35,7 +35,7 @@ const NavBar = ({cartItems}) => {
           >
             <li className={`nav-item dropdown ${classes["navbar_li"]}`}>
               <div className={`${classes.middleNav}`}>
-                <SearchBox />
+                <SearchBox/>
                 <Link
                   className={`nav-link position-relative ${classes.account_text}`}
                   to="/cart"
@@ -56,6 +56,15 @@ const NavBar = ({cartItems}) => {
                   aria-expanded="false"
                 >
                   My Account
+                </Link>
+                <Link
+                  to="/signup"
+                  id="navbarDropdown"
+                  role="button"
+                  // data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Sign Up
                 </Link>
               </div>
             </li>
