@@ -1,9 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Grid from '@mui/material/Grid';
 import classes from './Signup.module.css'
 import InputTextBox from './InputTextBox';
 
 const Signup = () => {
+
+    const [inputs, setInputs] = useState([])
+
+    const handleInputChange = v => {
+        const a = Object.keys(inputs.map(input => input));
+        console.log(a)
+        setInputs([...inputs, v])
+    }
+
+    console.log(inputs)
     return (
         <React.Fragment>
         <form method="POST" action="http://localhost:5000/signup">
@@ -20,16 +30,16 @@ const Signup = () => {
                     
                         <Grid container item xs={12} sm={6} direction='column'>
                             <h2 className={classes.signup}>Sign Up</h2>
-                            <InputTextBox label='Name' inputName='name'/>
-                            <InputTextBox type='email' label='Gmail' inputName='gmail'/>
-                            <InputTextBox type='password' label='Password' inputName='password'/>
-                            <InputTextBox type='password' label='Comfirm Password' inputName='comfirmPassword'/>
+                            <InputTextBox label='Name' inputName='name' handleInputChange={handleInputChange}/>
+                            <InputTextBox type='email' label='Gmail' inputName='gmail' handleInputChange={handleInputChange}/>
+                            <InputTextBox type='password' label='Password' inputName='password' handleInputChange={handleInputChange}/>
+                            <InputTextBox type='password' label='Comfirm Password' inputName='comfirmPassword' handleInputChange={handleInputChange}/>
                         </Grid>
                         <Grid item xs={12} sm={6} className={classes.rightInputs}>
-                            <InputTextBox label='Phone' inputName='phone'/>
-                            <InputTextBox label='City' inputName='city'/>
-                            <InputTextBox label='Postal' inputName='postal'/>
-                            <InputTextBox label='Address' inputName='address'/>
+                            <InputTextBox label='Phone' inputName='phone' handleInputChange={handleInputChange}/>
+                            <InputTextBox label='City' inputName='city' handleInputChange={handleInputChange}/>
+                            <InputTextBox label='Postal' inputName='postal' handleInputChange={handleInputChange}/>
+                            <InputTextBox label='Address' inputName='address' handleInputChange={handleInputChange}/>
                         </Grid>
                         <Grid item xs={12} className={classes.buttons} >
                             <button className={classes.buttons__signup} type='submit'>Sign up</button>
