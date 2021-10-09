@@ -1,13 +1,13 @@
-.searchIconBox{
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-    border-color: #0071dc;
-    border-left-width: 0;
-    background-color: #ffc320e3;
+.searchIconBox {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-color: #0071dc;
+  border-left-width: 0;
+  background-color: #ffc320e3;
 }
 
-.searchIconBox:hover{
-    background-color: #ffc320;
+.searchIconBox:hover {
+  background-color: #ffc320;
 }
 
 .searchInputBox{
@@ -16,17 +16,19 @@
     height: auto;
 }
 
-.searchInputBox:focus{
-    border-color: unset;
-    box-shadow: unset;
+.searchInputBox:focus {
+  border-color: unset;
+  box-shadow: unset;
 }
 
 .searchForm{
     width: 100%;
 }
 
-.icon{
-    color: white;
+@media (min-width: 992px) {
+  .searchForm {
+    width: 70%;
+  }
 }
 
 @media(max-width : 992px){
