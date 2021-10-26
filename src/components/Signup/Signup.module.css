@@ -1,5 +1,6 @@
 .rightPanel {
-  padding: 100px 20px 0 20px;
+  /* padding: 100px 20px 0 20px; */
+  padding: 100px 20px 0;
 }
 
 .image {
@@ -14,12 +15,14 @@
   margin-bottom: 50px;
 }
 
-.inputs {
+.inputs, .login__inputs {
   display: flex;
   flex-direction: column;
   margin-bottom: 30px;
   width: 85%;
 }
+
+
 
 .rightInputs {
   padding-top: 88.4px;
@@ -30,8 +33,10 @@
   font-size: 17px;
 }
 
-.buttons__signup {
-  background-color: #0071dc;
+.buttons__signup,
+.buttons__login {
+  background-color: #004f9a;
+  /* background-color: #0071dc; */
   border: none;
   color: white;
   padding: 13px 32px;
@@ -42,11 +47,19 @@
   width: 250px;
 }
 
-.buttons__signup:hover {
-  background-color: #004f9a;
+.buttons__signup:hover,
+.buttons__login:hover {
+  /* background-color: #004f9a; */
+  background-color: #0071dc;
 }
 
-.accountExist {
+.buttons__login {
+  border-radius: 5px;
+  width: 43%;
+}
+
+.accountExist,
+.accountDontExist {
   color: rgb(166, 165, 163);
   cursor: pointer;
   padding-left: 34px;
@@ -57,16 +70,32 @@
   opacity: 0.7;
 }
 
+.accountDontExist {
+  padding-left: 0;
+}
+
+.social_login__buttons{
+  padding-top: 10px;
+}
+
 @media (max-width: 598px) {
-  .leftPanel {
+  #leftPanel {
     display: none;
   }
 
   .rightPanel {
-    margin-top: 0;
+    padding: 25px 20px;
+    align-self: center;
   }
 
   .rightInputs {
     padding-top: 0;
+  }
+
+  .inputs, .login__inputs{
+    width: 100%;
+  }
+  .buttons__login {
+    width: 100%;
   }
 }

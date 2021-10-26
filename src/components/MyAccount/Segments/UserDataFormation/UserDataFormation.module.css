@@ -1,0 +1,14 @@
+.info_container{
+    position: relative;
+}
+
+.title{
+    font-size: 12px;
+    font-weight: bold;
+    color: rgb(97, 96, 96);
+}
+
+.user_data{
+    font-size: 18px;
+    width: 100%;
+}

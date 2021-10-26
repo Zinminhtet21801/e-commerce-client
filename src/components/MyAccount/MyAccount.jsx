@@ -4,15 +4,33 @@ import { Link } from "react-router-dom";
 import URLCrumb from "../BreadCrumbs/URLCrumb";
 import AccountSegment from "./Segments/AccountSegment";
 import classes from "./MyAccount.module.css";
-import OrderHistorySegment from "./Segments/OrderHistorySegment";
+import OrderHistorySegment from "./OrderHistorySegment";
+import LeftDrawer from "./Drawer/Drawer";
+
+
 
 const MyAccount = (props) => {
   const [urlLink, setUrlLink] = useState("/my account");
+  const [urlShrink, setUrlShrink] = useState(false);
+
+  const urlLinkHandler = (url) => {
+    setUrlLink(url);
+  };
+
+  const urlShrinkHandler = (bool) => {
+    setUrlShrink(bool);
+  };
+
   return (
     <React.Fragment>
       <URLCrumb url={urlLink} />
       <div className={`${classes.container}`}>
-        <h1 className={classes.account_page_title}>Settings</h1>
+        <h1
+          className={classes.account_page_title}
+          style={{ display: "inline" }}
+        >
+          Settings
+        </h1>
         <div className={`row ${classes.row_account_page}`}>
           <div
             className={`col col-lg-3 col-md-12 col-sm-12 col-xs-12 ${classes.left_col}`}
@@ -20,60 +38,79 @@ const MyAccount = (props) => {
             <nav className={`navbar navbar-light navbar-expand-lg `}>
               <div className={`container-fluid`}>
                 <button
-                  className={`navbar-toggler ${classes.account_page_collapse_btn}`}
+                  className="navbar-toggler"
                   type="button"
                   data-bs-toggle="collapse"
-                  data-bs-target="#collapseNavbar"
+                  data-bs-target="#navbarContent"
+                  aria-controls="navbarSupportedContent"
+                  aria-expanded="false"
+                  aria-label="Toggle navigation"
+                  // onClick={()=> setUrlShrink(true)}
                 >
-                  <span
-                    className={`navbar-toggler-icon`}
-                    style={{ backgroundColor: "darkblue" }}
-                  ></span>
+                  <LeftDrawer
+                    urlHandler={urlLinkHandler}
+                    urlShrinkHandler={urlShrinkHandler}
+                  />
                 </button>
-                <div className="collapse navbar-collapse" id="collapseNavbar">
-                  <ul className={` navbar-nav  ${classes.left_title}`}>
-                    <li className={`nav-item ${classes.left_li}`}>
-                      <span
-                        onClick={() => setUrlLink("/my account")}
-                        className={`nav-link ${
-                          urlLink.includes("my account") && classes.active_link
-                        } ${classes.account_link}`}
+                {!urlShrink && (
+                  <div className="collapse navbar-collapse" id="navbarContent">
+                    <ul
+                      className="navbar-nav  mb-2 mb-lg-0"
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        width: "100%",
+                      }}
+                    >
+                      <li
+                        className="nav-item"
+                        style={{ width: "50%", marginLeft: "40.5%" }}
                       >
-                        My Account
-                      </span>
-                    </li>
-                    <li className={`nav-item ${classes.left_li}`}>
-                      <span
-                        onClick={() => setUrlLink("/order history")}
-                        className={`nav-link ${
-                          urlLink.includes("order history") &&
-                          classes.active_link
-                        }  ${classes.account_link}`}
-                        id="spanner"
+                        <span
+                          onClick={() => setUrlLink("/my account")}
+                          className={`nav-link ${
+                            urlLink.includes("my account") &&
+                            classes.active_link
+                          } ${classes.account_link}`}
+                          style={{ color: "black" }}
+                        >
+                          My Account
+                        </span>
+                      </li>
+                      <li
+                        className="nav-item"
+                        style={{ width: "50%", marginLeft: "40.5%" }}
                       >
-                        Order History
-                      </span>
-                    </li>
-                  </ul>
-                </div>
+                        <span
+                          onClick={() => setUrlLink("/order history")}
+                          className={`nav-link ${
+                            urlLink.includes("order history") &&
+                            classes.active_link
+                          } ${classes.account_link}`}
+                          style={{ color: "black" }}
+                        >
+                          Order History
+                        </span>
+                      </li>
+                    </ul>
+                  </div>
+                )}
               </div>
             </nav>
           </div>
           <div
             className={`col-lg-9 col-md-12 col-sm-12 col-xs-12 ${classes.right_col}`}
           >
-            <div className={`${classes["inner_container"]}`}>
+            <div
+              className={`${
+                urlLink.includes("my account") && classes.inner_container
+              }`}
+            >
               {urlLink.includes("my account") ? (
-                <div>
-                  <AccountSegment />
-                </div>
+                <AccountSegment />
               ) : (
                 <OrderHistorySegment />
               )}
-              <div className={`${classes["btn_container"]}`}>
-                <button className={`btn btn-primary`}>Save</button>
-                <button className={`btn btn-primary`}>Cancel</button>
-              </div>
             </div>
           </div>
         </div>

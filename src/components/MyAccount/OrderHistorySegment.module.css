@@ -1,0 +1,57 @@
+.outer_container{
+    
+}
+
+.inner_container{
+    background-color: blue;
+}
+
+.container{
+    width: 90%;
+    margin: auto;
+}
+
+.page_title{
+    display: inline-block;
+}
+
+.header_container{
+    width: 90%;
+    margin: auto;
+}
+
+.item_grid{
+    padding-bottom: 10px;
+    margin: 0 auto;
+    border-bottom: 1.5px solid rgba(0, 0, 0, .2);
+}
+
+.no_data_found{
+    text-align: center;
+}
+
+.no_data_found:not(:first-child){
+    display: none;
+}
+
+
+
+@media (max-width : 600px){
+    .item_grid{
+        border-radius: 10px;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+    .qty_text{
+        font-size: 14px;
+        color: rgb(188, 183, 174);
+    }
+    
+    .price_text{
+        font-size: 14px;
+        color: rgb(188, 183, 174);
+    }
+    
+    .item_name_text{
+        word-wrap: break-word;
+    }
+}

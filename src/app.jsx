@@ -9,7 +9,8 @@ import Cart from "./components/Cart/Cart"
 import ItemDetail from "./components/ItemDetail/ItemDetail"
 import Footer from "./components/Footer/Footer"
 import Category from "./components/Category/Category"
-import OrderHistorySegment from "./components/MyAccount/Segments/OrderHistorySegment"
+import Signup from "./components/Signup/Signup"
+import Login from "./components/Login/Login"
 const App = () =>{
 
     const [cartItems, setCartItems] = useState([]);
@@ -44,6 +45,8 @@ const App = () =>{
                 <Route path="/cart">
                     <Cart cartItems={cartItems} />
                 </Route>
+                <Route path={"/sign up"} component={Signup} />
+                <Route path={"/login"} component={Login} />
                 </Switch>
                 <Footer />
             </React.Fragment>

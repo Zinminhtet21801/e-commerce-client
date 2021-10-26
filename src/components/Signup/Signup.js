@@ -2,23 +2,21 @@ import React, { useState } from 'react'
 import Grid from '@mui/material/Grid';
 import classes from './Signup.module.css'
 import InputTextBox from './InputTextBox';
+import { Link } from 'react-router-dom';
 
 const Signup = () => {
 
-    const [inputs, setInputs] = useState([])
+    const [inputs, setInputs] = useState()
 
     const handleInputChange = v => {
-        const a = Object.keys(inputs.map(input => input));
-        console.log(a)
-        setInputs([...inputs, v])
+        let key = Object.keys(v)[0]
+        setInputs(prevValue => ({...prevValue, [key] : v}))
     }
-
-    console.log(inputs)
     return (
         <React.Fragment>
         <form method="POST" action="http://localhost:5000/signup">
             <Grid container>
-                <Grid container item xs={12} md={5} justifyContent='center' className={classes.leftPanel}>
+                <Grid container item xs={12} md={5} justifyContent='center' id={classes.leftPanel}>
                     <img
                         src='https://res.cloudinary.com/haw010/image/upload/v1633616333/shopping-cart_yrvc2f.png' 
                         alt='shopping-cart'
@@ -43,7 +41,7 @@ const Signup = () => {
                         </Grid>
                         <Grid item xs={12} className={classes.buttons} >
                             <button className={classes.buttons__signup} type='submit'>Sign up</button>
-                            <h6 className={classes.accountExist}>Already have an account.</h6>
+                            <h6 className={classes.accountExist}>Already have an account? <Link to="/login" >Login</Link></h6>
                         </Grid>
                 </Grid>
             </Grid>

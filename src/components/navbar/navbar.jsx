@@ -55,9 +55,27 @@ const NavBar = ({cartItems}) => {
             <Link
                   to="/my account"
                   className={`nav-link ${classes.account_text}`}
-                  color="#fff"
+                  style={{color : "#fff"}}
                 >
-                  My Account
+                  Account
+                </Link>
+            </li>
+            <li className={`nav-item dropdown ${classes["navbar_li"]}`}>
+            <Link
+                  to="/sign up"
+                  className={`nav-link ${classes.account_text}`}
+                  style={{color : "#fff"}}
+                >
+                  Sign Up
+                </Link>
+            </li>
+            <li className={`nav-item dropdown ${classes["navbar_li"]}`}>
+            <Link
+                  to="/login"
+                  className={`nav-link ${classes.account_text}`}
+                  style={{color : "#fff"}}
+                >
+                  Login
                 </Link>
             </li>
           </ul>
