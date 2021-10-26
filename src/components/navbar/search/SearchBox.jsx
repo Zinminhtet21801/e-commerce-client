@@ -10,7 +10,7 @@ const SearchBox = () =>{
     return(
             <form className={`d-flex  ${classes.searchForm}`}>
             <input className={`form-control ${classes.searchInputBox}`} type="search" placeholder="Search" aria-label="Search" />
-            <button className={`btn btn-outline-success ${classes.searchIconBox}`} style={searchBoxBorderHover} type="submit"><SearchIcon className={classes.icon} /></button>
+            <button className={`btn ${classes.searchIconBox}`} style={searchBoxBorderHover} type="submit"><SearchIcon className={classes.icon} /></button>
           </form>
     )
 }

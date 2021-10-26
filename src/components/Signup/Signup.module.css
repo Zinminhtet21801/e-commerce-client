@@ -1,4 +1,4 @@
-.rightPanel {
+#rightPanel {
   padding: 100px 20px 0 20px;
 }
 
@@ -21,7 +21,7 @@
   width: 85%;
 }
 
-.rightInputs {
+#rightInputs {
   padding-top: 88.4px;
 }
 
@@ -49,7 +49,7 @@
 .accountExist {
   color: rgb(166, 165, 163);
   cursor: pointer;
-  padding-left: 34px;
+  padding-left: 14px;
   padding-top: 10px;
 }
 
@@ -57,16 +57,22 @@
   opacity: 0.7;
 }
 
+@media (max-width: 900px) {
+  #rightInputs {
+    padding-top: 83.4px;
+  }
+}
+
 @media (max-width: 598px) {
-  .leftPanel {
+  #leftPanel {
     display: none;
   }
 
-  .rightPanel {
+  #rightPanel {
     margin-top: 0;
   }
 
-  .rightInputs {
+  #rightInputs {
     padding-top: 0;
   }
 }
