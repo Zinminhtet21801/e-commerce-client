@@ -1,6 +1,5 @@
-.rightPanel {
-  /* padding: 100px 20px 0 20px; */
-  padding: 100px 20px 0;
+#rightPanel {
+  padding: 100px 20px 0 20px;
 }
 
 .image {
@@ -22,9 +21,7 @@
   width: 85%;
 }
 
-
-
-.rightInputs {
+#rightInputs {
   padding-top: 88.4px;
 }
 
@@ -62,20 +59,25 @@
 .accountDontExist {
   color: rgb(166, 165, 163);
   cursor: pointer;
-  padding-left: 34px;
+  padding-left: 14px;
   padding-top: 10px;
+}
+.accountDontExist{
+  padding-left: 0;
 }
 
 .accountExist:hover {
   opacity: 0.7;
 }
 
-.accountDontExist {
-  padding-left: 0;
+.social_login__buttons{
+  padding-top: 30px;
 }
 
-.social_login__buttons{
-  padding-top: 10px;
+@media (max-width: 900px) {
+  #rightInputs {
+    padding-top: 83.4px;
+  }
 }
 
 @media (max-width: 598px) {
@@ -83,12 +85,11 @@
     display: none;
   }
 
-  .rightPanel {
-    padding: 25px 20px;
-    align-self: center;
+  #rightPanel {
+    margin-top: 0;
   }
 
-  .rightInputs {
+  #rightInputs {
     padding-top: 0;
   }
 

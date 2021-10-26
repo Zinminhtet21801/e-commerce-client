@@ -42,7 +42,7 @@ const Login = () => {
             xs={12}
             md={6}
             columnSpacing="2"
-            className={classes.rightPanel}
+            id={classes.rightPanel}
           >
             <Grid container item xs={12} sm={6} direction="column">
               <h2 className={classes.signup}>Login</h2>
