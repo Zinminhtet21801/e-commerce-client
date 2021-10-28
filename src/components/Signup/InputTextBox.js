@@ -33,6 +33,7 @@ const InputTextBox = ({type, label, inputName, handleInputChange, passwordToggle
         } else if(label === "Password") {
             return (
                 <Input
+                inputProps={{pattern : `[\\D][A-Za-z0-9]{5,}`}}
                 name={inputName} 
                 required={true}
                 type={showPassword ? 'text' : 'password'}
@@ -51,7 +52,7 @@ const InputTextBox = ({type, label, inputName, handleInputChange, passwordToggle
                 }                
                 />
             )
-        } else if(label === "Comfirm Password") {
+        } else if(label === "Confirm Password") {
             return (
                 <Input
                 name={inputName} 

@@ -70,7 +70,7 @@ const Signup = () => {
                         <InputTextBox label='Name' inputName='name' handleInputChange={handleInputChange}/>
                         <InputTextBox type='email' label='Gmail' inputName='gmail' handleInputChange={handleInputChange}/>
                         <InputTextBox type='password' label='Password' inputName='password' handleInputChange={handleInputChange} passwordToggle={passwordErrorToggle}/>
-                        <InputTextBox type='password' label='Comfirm Password' inputName='comfirmPassword' handleInputChange={handleInputChange} passwordToggle={passwordErrorToggle}/>
+                        <InputTextBox type='password' label='Confirm Password' inputName='confirmPassword' handleInputChange={handleInputChange} passwordToggle={passwordErrorToggle}/>
                     </Grid>
                     <Grid item xs={12} sm={6} id={classes.rightInputs}>
                         <InputTextBox label='Phone' inputName='phone' handleInputChange={handleInputChange} phoneToggle={phoneErrorToggle}/>
@@ -80,7 +80,7 @@ const Signup = () => {
                     </Grid>
                     <Grid item xs={12} className={classes.buttons} >
                         <button className={classes.buttons__signup} type='submit'>Sign up</button>
-                        <h6 className={classes.accountExist}>Already have an account? Login</h6>
+                        <h6 className={classes.accountExist}>Already have an account? <Link to="/login">Login</Link></h6>
                     </Grid>
                 </Grid>
             </Grid>
