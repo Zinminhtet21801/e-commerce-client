@@ -56,6 +56,7 @@ const InputTextBox = ({type, label, inputName, handleInputChange, passwordToggle
             return (
                 <Input
                 name={inputName} 
+                inputProps={{pattern : `[\\D][A-Za-z0-9]{5,}`}}
                 required={true}
                 type={showPassword ? 'text' : 'password'}
                 onChange={(e) => {handleInputChange({[e.target.name]: e.target.value})}}

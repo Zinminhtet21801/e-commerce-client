@@ -11,9 +11,20 @@ import Footer from "./components/Footer/Footer"
 import Category from "./components/Category/Category"
 import Signup from "./components/Signup/Signup"
 import Login from "./components/Login/Login"
+import SnackbarComponent from "./components/Snackbar/SnackbarComponent"
+
 const App = () =>{
 
     const [cartItems, setCartItems] = useState([]);
+    const [message, setMessage] = useState("")
+
+    const getMessage = (msg) =>{
+        setMessage(msg)
+        setTimeout(()=>{
+            setMessage("")
+        },2000)
+    }
+
     const onAdd = item => {
         const itemExist = cartItems?.find(product => product.id === item.id)
         if (itemExist) {
@@ -45,9 +56,14 @@ const App = () =>{
                 <Route path="/cart">
                     <Cart cartItems={cartItems} />
                 </Route>
-                <Route path={"/sign up"} component={Signup} />
-                <Route path={"/login"} component={Login} />
+                <Route path={"/signup"} >
+                <Signup getMessage={getMessage} />
+                </Route>
+                <Route path={"/login"} >
+                <Login getMessage={getMessage} />
+                </Route>
                 </Switch>
+                <SnackbarComponent message={message} />
                 <Footer />
             </React.Fragment>
         </Router>

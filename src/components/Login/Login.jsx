@@ -1,28 +1,45 @@
-import {
-  Grid,
-  FormGroup,
-  FormControlLabel,
-  Checkbox,
-} from "@mui/material";
+import { Grid, FormGroup, FormControlLabel, Checkbox } from "@mui/material";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import InputTextBox from "../Signup/InputTextBox";
 import classes from "../Signup/Signup.module.css";
-import FacebookIcon from '@mui/icons-material/Facebook';
+import FacebookIcon from "@mui/icons-material/Facebook";
+import { useHistory } from "react-router-dom";
+import axios from "axios";
 
-const Login = () => {
-  const [inputs, setInputs] = useState();
+const Login = ({ getMessage }) => {
+  const [inputs, setInputs] = useState({
+    username: "",
+    password: "",
+  });
   const [rememberMe, setRememberMe] = useState(false);
+  const history = useHistory()
+
   const handleInputChange = (v) => {
     let key = Object.keys(v)[0];
-    setInputs((prevValue) => ({ ...prevValue, [key]: v }));
+    setInputs((prevValue) => ({ ...prevValue, [key]: v[key] }));
   };
 
-  console.log(document.cookie);
+  const login = async() => {
+    const username = inputs.username,
+      password = inputs.password;
+    await axios({
+      method: "POST",
+      url: "http://localhost:5000/login",
+      data: {
+        username: username,
+        password: password,
+      },
+      withCredentials: true,
+      
+    }).then((res) => {
+      history.replace("/")
+      getMessage(res.data)
+    });
+  };
 
   return (
     <React.Fragment>
-      <form method="POST" action="http://localhost:5000/login">
         <Grid container>
           <Grid
             container
@@ -52,7 +69,8 @@ const Login = () => {
               <InputTextBox
                 type="email"
                 label="Gmail"
-                inputName="gmail"
+                // inputName="gmail"
+                inputName="username"
                 handleInputChange={handleInputChange}
                 className={"login"}
               />
@@ -64,25 +82,34 @@ const Login = () => {
                 handleInputChange={handleInputChange}
               />
               <FormGroup>
-                <FormControlLabel control={<Checkbox />} label="Remember me" name="remember" value={rememberMe} onClick={()=> setRememberMe(prevBool=> !prevBool)} />
+                <FormControlLabel
+                  control={<Checkbox />}
+                  label="Remember me"
+                  name="remember"
+                  value={rememberMe}
+                  onClick={() => setRememberMe((prevBool) => !prevBool)}
+                />
               </FormGroup>
             </Grid>
             <Grid item xs={12} className={classes.buttons}>
-              <button className={classes.buttons__login} type="submit">
+              <button
+                className={classes.buttons__login}
+                onClick={login}
+                disabled={(inputs.username && inputs.password ) ? false : true }
+              >
                 Login
               </button>
               <h6 className={classes.accountDontExist}>
                 Don't have an account yet?{" "}
-                <Link to="/sign up">Create account</Link>
+                <Link to="/signup">Create account</Link>
               </h6>
             </Grid>
             <Grid item xs={12} className={classes.social_login__buttons}>
               <h5>Or login with </h5>
-              <FacebookIcon style={{color : "#1778F2", fontSize : "33px"}} />
+              <FacebookIcon style={{ color: "#1778F2", fontSize: "33px" }} />
             </Grid>
           </Grid>
         </Grid>
-      </form>
     </React.Fragment>
   );
 };

@@ -2,15 +2,16 @@ import React, { useState, useEffect } from 'react'
 import Grid from '@mui/material/Grid';
 import classes from './Signup.module.css'
 import InputTextBox from './InputTextBox';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import axios from 'axios';
 
-const Signup = () => {
+const Signup = ({ getMessage }) => {
 
     const [inputs, setInputs] = useState({
         name: '',
         gmail: '',
         password: '',
-        comfirmPassword: '',
+        confirmPassword: '',
         phone: '',
         city: '',
         postal: '',
@@ -18,7 +19,7 @@ const Signup = () => {
     })
     const [ passwordErrorToggle, setPasswordErrorToggle ] = useState(false)
     const [ phoneErrorToggle, setPhoneErrorToggle ] = useState(false)
-    // const [ toggle, setToggle ] = useState()
+    const history = useHistory()
 
     const handleInputChange = v => {
         const key = Object.keys(v)[0];
@@ -26,12 +27,12 @@ const Signup = () => {
         setInputs(prev => ({...prev, [key] : value}))
     }
 
-    console.log(inputs)
+    // console.log(inputs)
 
     useEffect(() => {
-
-        if(inputs.password && inputs.comfirmPassword) {
-            if(inputs.password !== inputs.comfirmPassword) {
+        console.log(inputs.password , inputs.confirmPassword);
+        if(inputs.password && inputs.confirmPassword) {
+            if(inputs.password !== inputs.confirmPassword) {
                 setPasswordErrorToggle(true)
             }else {
                 setPasswordErrorToggle(false)
@@ -51,10 +52,22 @@ const Signup = () => {
         
     }, [inputs])
 
-    
+    const signup = async() =>{
+        await axios({
+            method : "post",
+            url : "http://localhost:5000/signup",
+            data : {
+                inputs
+            },
+            withCredentials: true,
+        }).then((res) => {
+            history.replace("/")
+            console.log(res)
+            getMessage(res.data)
+          });
+    }
     return (
         <React.Fragment>
-        <form method="POST" action="http://localhost:5000/signup">
             <Grid container>
                 <Grid container item xs={12} md={5} justifyContent='center' id={classes.leftPanel}>
                     <img
@@ -79,12 +92,11 @@ const Signup = () => {
                         <InputTextBox label='Address' inputName='address' handleInputChange={handleInputChange}/>
                     </Grid>
                     <Grid item xs={12} className={classes.buttons} >
-                        <button className={classes.buttons__signup} type='submit'>Sign up</button>
+                        <button className={classes.buttons__signup} onClick={signup}>Sign up</button>
                         <h6 className={classes.accountExist}>Already have an account? <Link to="/login">Login</Link></h6>
                     </Grid>
                 </Grid>
             </Grid>
-        </form>
         </React.Fragment>
     )
 }
