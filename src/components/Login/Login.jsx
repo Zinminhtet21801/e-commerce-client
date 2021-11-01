@@ -12,14 +12,17 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 
 const Login = () => {
   const [inputs, setInputs] = useState();
+  const [rememberMe, setRememberMe] = useState(false);
   const handleInputChange = (v) => {
     let key = Object.keys(v)[0];
     setInputs((prevValue) => ({ ...prevValue, [key]: v }));
   };
 
+  console.log(document.cookie);
+
   return (
     <React.Fragment>
-      <form method="POST" action="http://localhost:5000/signup">
+      <form method="POST" action="http://localhost:5000/login">
         <Grid container>
           <Grid
             container
@@ -61,7 +64,7 @@ const Login = () => {
                 handleInputChange={handleInputChange}
               />
               <FormGroup>
-                <FormControlLabel control={<Checkbox />} label="Remember me" />
+                <FormControlLabel control={<Checkbox />} label="Remember me" name="remember" value={rememberMe} onClick={()=> setRememberMe(prevBool=> !prevBool)} />
               </FormGroup>
             </Grid>
             <Grid item xs={12} className={classes.buttons}>

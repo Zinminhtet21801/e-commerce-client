@@ -14,7 +14,8 @@
   margin-bottom: 50px;
 }
 
-.inputs, .login__inputs {
+.inputs,
+.login__inputs {
   display: flex;
   flex-direction: column;
   margin-bottom: 30px;
@@ -42,6 +43,7 @@
   cursor: pointer;
   border-radius: 30px;
   width: 250px;
+  display: block;
 }
 
 .buttons__signup:hover,
@@ -61,8 +63,9 @@
   cursor: pointer;
   padding-left: 14px;
   padding-top: 10px;
+  display: inline;
 }
-.accountDontExist{
+.accountDontExist {
   padding-left: 0;
 }
 
@@ -70,7 +73,7 @@
   opacity: 0.7;
 }
 
-.social_login__buttons{
+.social_login__buttons {
   padding-top: 30px;
 }
 
@@ -93,7 +96,8 @@
     padding-top: 0;
   }
 
-  .inputs, .login__inputs{
+  .inputs,
+  .login__inputs {
     width: 100%;
   }
   .buttons__login {

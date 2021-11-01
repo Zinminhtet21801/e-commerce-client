@@ -2,9 +2,13 @@ import React, { useState, useEffect } from 'react'
 import Grid from '@mui/material/Grid';
 import classes from './Signup.module.css'
 import InputTextBox from './InputTextBox';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import axios from 'axios';
+
 
 const Signup = () => {
+
+    const history = useHistory();
 
     const [inputs, setInputs] = useState({
         name: '',
@@ -18,15 +22,12 @@ const Signup = () => {
     })
     const [ passwordErrorToggle, setPasswordErrorToggle ] = useState(false)
     const [ phoneErrorToggle, setPhoneErrorToggle ] = useState(false)
-    // const [ toggle, setToggle ] = useState()
 
     const handleInputChange = v => {
         const key = Object.keys(v)[0];
         const value = Object.values(v)[0];
         setInputs(prev => ({...prev, [key] : value}))
     }
-
-    console.log(inputs)
 
     useEffect(() => {
 
@@ -48,13 +49,23 @@ const Signup = () => {
             setPhoneErrorToggle(false)
         }
         
-        
     }, [inputs])
 
+    const signup = async () => {
+        await axios({
+            method: 'post',
+            data: {inputs},
+            url: "http://localhost:5000/signup",
+            withCredentials: true
+        }).then (res => {
+            console.log(res.data)
+            res.data.includes("completed!!") && history.replace('/login')
+        }).catch(err => console.log(`error in posting signu data -> ${err}`))
+    }
     
     return (
         <React.Fragment>
-        <form method="POST" action="http://localhost:5000/signup">
+        {/* <form method="POST" action="http://localhost:5000/signup"> */}
             <Grid container>
                 <Grid container item xs={12} md={5} justifyContent='center' id={classes.leftPanel}>
                     <img
@@ -79,12 +90,12 @@ const Signup = () => {
                         <InputTextBox label='Address' inputName='address' handleInputChange={handleInputChange}/>
                     </Grid>
                     <Grid item xs={12} className={classes.buttons} >
-                        <button className={classes.buttons__signup} type='submit'>Sign up</button>
-                        <h6 className={classes.accountExist}>Already have an account? Login</h6>
+                        <button className={classes.buttons__signup} onClick={signup} disabled={(passwordErrorToggle || phoneErrorToggle) ? true : false}>Sign up</button>
+                        <Link to='/login' style={{ textDecoration: 'none'}}><h6 className={classes.accountExist}>Already have an account? Login</h6></Link>
                     </Grid>
                 </Grid>
             </Grid>
-        </form>
+        {/* </form> */}
         </React.Fragment>
     )
 }

@@ -30,28 +30,7 @@ const InputTextBox = ({type, label, inputName, handleInputChange, passwordToggle
                 onChange={(e) => {handleInputChange({[e.target.name]: e.target.value})}} 
                 /> 
             )
-        } else if(label === "Password") {
-            return (
-                <Input
-                name={inputName} 
-                required={true}
-                type={showPassword ? 'text' : 'password'}
-                onChange={(e) => {handleInputChange({[e.target.name]: e.target.value})}}
-                endAdornment={
-                    <InputAdornment position="end">
-                        <IconButton
-                        aria-label="toggle password visibility"
-                        onClick={handleClickShowPassword}
-                        onMouseDown={handleMouseDownPassword}
-                        edge="end"
-                        >
-                        {showPassword ? <VisibilityOff /> : <Visibility />}
-                        </IconButton>
-                    </InputAdornment>
-                }                
-                />
-            )
-        } else if(label === "Comfirm Password") {
+        } else if(label === "Password" || label === "Comfirm Password") {
             return (
                 <Input
                 name={inputName} 

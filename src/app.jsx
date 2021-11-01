@@ -45,7 +45,7 @@ const App = () =>{
                 <Route path="/cart">
                     <Cart cartItems={cartItems} />
                 </Route>
-                <Route path={"/sign up"} component={Signup} />
+                <Route path={"/signup"} component={Signup} />
                 <Route path={"/login"} component={Login} />
                 </Switch>
                 <Footer />
