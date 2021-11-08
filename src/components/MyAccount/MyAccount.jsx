@@ -10,7 +10,7 @@ import LeftDrawer from "./Drawer/Drawer";
 
 
 const MyAccount = (props) => {
-  const [urlLink, setUrlLink] = useState("/my account");
+  const [urlLink, setUrlLink] = useState("/myAccount");
   const [urlShrink, setUrlShrink] = useState(false);
 
   const urlLinkHandler = (url) => {
@@ -67,9 +67,9 @@ const MyAccount = (props) => {
                         style={{ width: "50%", marginLeft: "40.5%" }}
                       >
                         <span
-                          onClick={() => setUrlLink("/my account")}
+                          onClick={() => setUrlLink("/myAccount")}
                           className={`nav-link ${
-                            urlLink.includes("my account") &&
+                            urlLink.includes("myAccount") &&
                             classes.active_link
                           } ${classes.account_link}`}
                           style={{ color: "black" }}
@@ -103,10 +103,10 @@ const MyAccount = (props) => {
           >
             <div
               className={`${
-                urlLink.includes("my account") && classes.inner_container
+                urlLink.includes("myAccount") && classes.inner_container
               }`}
             >
-              {urlLink.includes("my account") ? (
+              {urlLink.includes("myAccount") ? (
                 <AccountSegment />
               ) : (
                 <OrderHistorySegment />

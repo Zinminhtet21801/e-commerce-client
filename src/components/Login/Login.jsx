@@ -7,7 +7,7 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 
-const Login = ({ getMessage }) => {
+const Login = ({ getMessage, setNavUrl }) => {
   const [inputs, setInputs] = useState({
     username: "",
     password: "",
@@ -29,12 +29,14 @@ const Login = ({ getMessage }) => {
       data: {
         username: username,
         password: password,
+        rememberMe : rememberMe
       },
       withCredentials: true,
       
     }).then((res) => {
-      history.replace("/")
-      getMessage(res.data)
+      getMessage(res.data, true)
+      const splittedMsg = res.data && res.data.split("|");
+      splittedMsg && splittedMsg[0].includes("success") ? history.replace("/") : history.replace("/login")
     });
   };
 
@@ -83,11 +85,9 @@ const Login = ({ getMessage }) => {
               />
               <FormGroup>
                 <FormControlLabel
-                  control={<Checkbox />}
+                  control={<Checkbox onClick={()=> setRememberMe((prevBool) => !prevBool)} value={rememberMe} />}
                   label="Remember me"
                   name="remember"
-                  value={rememberMe}
-                  onClick={() => setRememberMe((prevBool) => !prevBool)}
                 />
               </FormGroup>
             </Grid>
@@ -101,7 +101,7 @@ const Login = ({ getMessage }) => {
               </button>
               <h6 className={classes.accountDontExist}>
                 Don't have an account yet?{" "}
-                <Link to="/signup">Create account</Link>
+                <Link to="/signup" onClick={()=> setNavUrl("/signup")}>Create account</Link>
               </h6>
             </Grid>
             <Grid item xs={12} className={classes.social_login__buttons}>

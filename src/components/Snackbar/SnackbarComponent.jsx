@@ -49,7 +49,7 @@ export default function SnackbarComponent({message}) {
         <Alert
           onClose={handleClose}
           severity={
-            splittedMsg && splittedMsg[0].includes("Success")
+            splittedMsg && splittedMsg[0].includes("success")
               ? "success"
               : "error"
           }
