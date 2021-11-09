@@ -5,16 +5,13 @@ import InputTextBox from './InputTextBox';
 import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
 
-
-const Signup = () => {
-
-    const history = useHistory();
+const Signup = ({ getMessage }) => {
 
     const [inputs, setInputs] = useState({
         name: '',
         gmail: '',
         password: '',
-        comfirmPassword: '',
+        confirmPassword: '',
         phone: '',
         city: '',
         postal: '',
@@ -22,6 +19,7 @@ const Signup = () => {
     })
     const [ passwordErrorToggle, setPasswordErrorToggle ] = useState(false)
     const [ phoneErrorToggle, setPhoneErrorToggle ] = useState(false)
+    const history = useHistory()
 
     const handleInputChange = v => {
         const key = Object.keys(v)[0];
@@ -29,10 +27,12 @@ const Signup = () => {
         setInputs(prev => ({...prev, [key] : value}))
     }
 
-    useEffect(() => {
+    // console.log(inputs)
 
-        if(inputs.password && inputs.comfirmPassword) {
-            if(inputs.password !== inputs.comfirmPassword) {
+    useEffect(() => {
+        console.log(inputs.password , inputs.confirmPassword);
+        if(inputs.password && inputs.confirmPassword) {
+            if(inputs.password !== inputs.confirmPassword) {
                 setPasswordErrorToggle(true)
             }else {
                 setPasswordErrorToggle(false)
@@ -49,23 +49,25 @@ const Signup = () => {
             setPhoneErrorToggle(false)
         }
         
+        
     }, [inputs])
 
-    const signup = async () => {
+    const signup = async() =>{
         await axios({
-            method: 'post',
-            data: {inputs},
-            url: "http://localhost:5000/signup",
-            withCredentials: true
-        }).then (res => {
-            console.log(res.data)
-            res.data.includes("completed!!") && history.replace('/login')
-        }).catch(err => console.log(`error in posting signu data -> ${err}`))
+            method : "post",
+            url : "http://localhost:5000/signup",
+            data : {
+                inputs
+            },
+            withCredentials: true,
+        }).then((res) => {
+            history.replace("/")
+            console.log(res)
+            getMessage(res.data, true)
+          });
     }
-    
     return (
         <React.Fragment>
-        {/* <form method="POST" action="http://localhost:5000/signup"> */}
             <Grid container>
                 <Grid container item xs={12} md={5} justifyContent='center' id={classes.leftPanel}>
                     <img
@@ -81,7 +83,7 @@ const Signup = () => {
                         <InputTextBox label='Name' inputName='name' handleInputChange={handleInputChange}/>
                         <InputTextBox type='email' label='Gmail' inputName='gmail' handleInputChange={handleInputChange}/>
                         <InputTextBox type='password' label='Password' inputName='password' handleInputChange={handleInputChange} passwordToggle={passwordErrorToggle}/>
-                        <InputTextBox type='password' label='Comfirm Password' inputName='comfirmPassword' handleInputChange={handleInputChange} passwordToggle={passwordErrorToggle}/>
+                        <InputTextBox type='password' label='Confirm Password' inputName='confirmPassword' handleInputChange={handleInputChange} passwordToggle={passwordErrorToggle}/>
                     </Grid>
                     <Grid item xs={12} sm={6} id={classes.rightInputs}>
                         <InputTextBox label='Phone' inputName='phone' handleInputChange={handleInputChange} phoneToggle={phoneErrorToggle}/>
@@ -90,12 +92,11 @@ const Signup = () => {
                         <InputTextBox label='Address' inputName='address' handleInputChange={handleInputChange}/>
                     </Grid>
                     <Grid item xs={12} className={classes.buttons} >
-                        <button className={classes.buttons__signup} onClick={signup} disabled={(passwordErrorToggle || phoneErrorToggle) ? true : false}>Sign up</button>
-                        <Link to='/login' style={{ textDecoration: 'none'}}><h6 className={classes.accountExist}>Already have an account? Login</h6></Link>
+                        <button className={classes.buttons__signup} onClick={signup}>Sign up</button>
+                        <h6 className={classes.accountExist}>Already have an account? <Link to="/login">Login</Link></h6>
                     </Grid>
                 </Grid>
             </Grid>
-        {/* </form> */}
         </React.Fragment>
     )
 }

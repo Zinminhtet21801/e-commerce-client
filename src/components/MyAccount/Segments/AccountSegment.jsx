@@ -3,9 +3,10 @@ import classes from "./AccountSegment.module.css";
 import EditIcon from "@mui/icons-material/Edit";
 import InputTextField from "./PasswordToggle/InputFieldText";
 import UserDataFormation from "./UserDataFormation/UserDataFormation";
-import { Link } from "react-router-dom";
+import axios from 'axios';
+import { Link, useHistory } from "react-router-dom";
 
-const AccountSegment = (props) => {
+const AccountSegment = ({ getMessage }) => {
   const [isEdit, setIsEdit] = useState(false);
   const [pwdToggle, setPwdToggle] = useState(false);
   const [editUserData, setEditUserData] = useState({
@@ -24,6 +25,7 @@ const AccountSegment = (props) => {
     password: "",
   });
   const [clearAllEditInput, setClearAllEditInput] = useState("");
+  const history = useHistory();
   useEffect(() => {
     const fetchUserData = async () => {
       await fetch(
@@ -43,14 +45,29 @@ const AccountSegment = (props) => {
     fetchUserData();
   }, []);
 
+  
   const pwdToggleHandler = (bool) => {
     setPwdToggle(bool);
   };
-
+  
   const inputChangeHandler = (data) => {
     setEditUserData(data);
   };
-
+  
+  const editUserdata = async () => {
+    await axios({
+      method: "PATCH",
+      url: `http://localhost:5000/update/user/${editUserData.name}`,
+      data: {
+        name: editUserData.name,
+        address: editUserData.address,
+        phone: editUserData.phone,
+        currentPwd: editUserData.currentPwd,
+        newPwd: editUserData.newPwd,
+        comfirmPwd: editUserData.comfirmPwd
+      }
+    })
+  }
 
   return (
     <React.Fragment>
@@ -74,7 +91,7 @@ const AccountSegment = (props) => {
           }
         </div>
         {isEdit ? <div className={`${classes["btn_container"]}`}>
-          <button className={`btn btn-primary`}>Save</button>
+          <button className={`btn btn-primary`} onClick={editUserdata}>Save</button>
           <button
             className={`btn btn-primary`}
             onClick={() =>setIsEdit(false)}
