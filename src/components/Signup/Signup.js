@@ -5,7 +5,7 @@ import InputTextBox from './InputTextBox';
 import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
 
-const Signup = ({ getMessage }) => {
+const Signup = ({ getMessage, setNavUrl }) => {
 
     const [inputs, setInputs] = useState({
         name: '',
@@ -27,10 +27,8 @@ const Signup = ({ getMessage }) => {
         setInputs(prev => ({...prev, [key] : value}))
     }
 
-    // console.log(inputs)
 
     useEffect(() => {
-        console.log(inputs.password , inputs.confirmPassword);
         if(inputs.password && inputs.confirmPassword) {
             if(inputs.password !== inputs.confirmPassword) {
                 setPasswordErrorToggle(true)
@@ -93,7 +91,7 @@ const Signup = ({ getMessage }) => {
                     </Grid>
                     <Grid item xs={12} className={classes.buttons} >
                         <button className={classes.buttons__signup} onClick={signup}>Sign up</button>
-                        <h6 className={classes.accountExist}>Already have an account? <Link to="/login">Login</Link></h6>
+                        <h6 className={classes.accountExist}>Already have an account? <Link to="/login" onClick={()=> setNavUrl("/login")}>Login</Link></h6>
                     </Grid>
                 </Grid>
             </Grid>

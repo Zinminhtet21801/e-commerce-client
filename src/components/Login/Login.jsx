@@ -6,7 +6,7 @@ import classes from "../Signup/Signup.module.css";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import axios from "axios";
 
-const Login = ({ getMessage }) => {
+const Login = ({ getMessage, setNavUrl }) => {
   const [inputs, setInputs] = useState({
     username: "",
     password: "",
@@ -33,9 +33,9 @@ const Login = ({ getMessage }) => {
       withCredentials: true,
       
     }).then((res) => {
+      getMessage(res.data, true)
       const splittedMsg = res.data && res.data.split("|");
       splittedMsg && splittedMsg[0].includes("success") ? history.replace("/") : history.replace("/login")
-      getMessage(res.data)
     });
   };
 
@@ -86,11 +86,9 @@ const Login = ({ getMessage }) => {
               />
               <FormGroup>
                 <FormControlLabel
-                  control={<Checkbox />}
+                  control={<Checkbox onClick={()=> setRememberMe((prevBool) => !prevBool)} value={rememberMe} />}
                   label="Remember me"
                   name="remember"
-                  value={rememberMe}
-                  onClick={() => setRememberMe((prevBool) => !prevBool)}
                 />
               </FormGroup>
             </Grid>
@@ -104,7 +102,7 @@ const Login = ({ getMessage }) => {
               </button>
               <h6 className={classes.accountDontExist}>
                 Don't have an account yet?{" "}
-                <Link to="/signup">Create account</Link>
+                <Link to="/signup" onClick={()=> setNavUrl("/signup")}>Create account</Link>
               </h6>
             </Grid>
             <Grid item xs={12} className={classes.social_login__buttons}>
