@@ -28,10 +28,10 @@ const InputTextField = ({ id, data, title, pwdToggle, onType, onFocus }) => {
         fullWidth
         type={title !== "password" ? "text" : (pwdToggler ? "text" : "password")}
         id={id}
-        placeholder={data}
+        placeholder={title === "password" && data}
         size="small"
         onChange={inputChangeHandler}
-        value={editUserData}
+        value={editUserData ? editUserData : data}
         onFocus={onFocusHandler}
         endAdornment={
           title === "password" && (

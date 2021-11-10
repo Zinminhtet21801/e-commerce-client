@@ -19,6 +19,7 @@ const NavBar = ({
   setClearUsername,
 }) => {
   console.log({ navUrl }, window.location.pathname);
+  console.log(username)
 
   const [open, setOpen] = React.useState(false);
   const history = useHistory();

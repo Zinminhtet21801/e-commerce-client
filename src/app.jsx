@@ -36,9 +36,11 @@ const App = () => {
         withCredentials: true,
       }).then(
         (res) =>
-          res.data &&
-          username !== res.data &&
-          (setUsername(res.data), setCookieExists(true))
+          {
+          return res.data &&
+          username !== res.data.name &&
+          (setUsername(res.data.name), setCookieExists(true))
+          }
       );
     };
 
@@ -49,9 +51,11 @@ const App = () => {
         withCredentials: true,
       }).then(
         (res) =>
-          res.data &&
-          username !== res.data &&
-          (setUsername(res.data), setCookieExists(true))
+          {
+          return res.data &&
+          username !== res.data.name &&
+          (setUsername(res.data.name), setCookieExists(true))
+          }
       );
     };
     setCookieExists(getCookie("rememberMe") ? true : false);

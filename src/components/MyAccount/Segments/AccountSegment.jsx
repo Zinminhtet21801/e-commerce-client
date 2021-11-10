@@ -3,15 +3,18 @@ import classes from "./AccountSegment.module.css";
 import EditIcon from "@mui/icons-material/Edit";
 import InputTextField from "./PasswordToggle/InputFieldText";
 import UserDataFormation from "./UserDataFormation/UserDataFormation";
-import { Link } from "react-router-dom";
+import axios from 'axios';
+import { Link, useHistory } from "react-router-dom";
 
-const AccountSegment = (props) => {
+const AccountSegment = ({ getMessage }) => {
+  const [ id, setId ] = useState(); 
   const [isEdit, setIsEdit] = useState(false);
   const [pwdToggle, setPwdToggle] = useState(false);
   const [editUserData, setEditUserData] = useState({
     name: "",
     address: "",
     phone: "",
+    email: "",
     currentPwd: "",
     newPwd: "",
     confirmPwd: "",
@@ -24,33 +27,54 @@ const AccountSegment = (props) => {
     password: "",
   });
   const [clearAllEditInput, setClearAllEditInput] = useState("");
+  const history = useHistory();
   useEffect(() => {
-    const fetchUserData = async () => {
-      await fetch(
-        "https://react-http-fd38c-default-rtdb.firebaseio.com/user.json"
-      )
-        .then((response) => response.json())
-        .then((data) =>
-          setUser({
-            name: data.name,
-            address: data.address,
-            phone: data.phone,
-            email: data.email,
-            password: data.password,
-          })
-        );
+    const getSessionID = async () => {
+      await axios({
+        method: "get",
+        url: "http://localhost:5000/users/session",
+        withCredentials: true,
+      }).then(
+        (res) => {
+          setId(res.data._id);
+          return res.data &&
+            setUser({
+              name: res.data.name,
+              address: res.data.address,
+              phone: res.data.phone,
+              email: res.data.gmail,
+              password: ""
+            })
+          }
+      );
     };
-    fetchUserData();
+    getSessionID();
   }, []);
 
+  
   const pwdToggleHandler = (bool) => {
     setPwdToggle(bool);
   };
-
+  
   const inputChangeHandler = (data) => {
     setEditUserData(data);
   };
-
+  
+  const editUserdata = async () => {
+    await axios({
+      method: "PATCH",
+      url: `http://localhost:5000/update/user/${id}`,
+      data: {
+        name: editUserData.name,
+        address: editUserData.address,
+        phone: editUserData.phone,
+        email: editUserData.email,
+        currentPwd: editUserData.currentPwd,
+        newPwd: editUserData.newPwd,
+        comfirmPwd: editUserData.comfirmPwd
+      }
+    })
+  }
 
   return (
     <React.Fragment>
@@ -74,7 +98,7 @@ const AccountSegment = (props) => {
           }
         </div>
         {isEdit ? <div className={`${classes["btn_container"]}`}>
-          <button className={`btn btn-primary`}>Save</button>
+          <button className={`btn btn-primary`} onClick={editUserdata}>Save</button>
           <button
             className={`btn btn-primary`}
             onClick={() =>setIsEdit(false)}

@@ -1,10 +1,9 @@
 import { Grid, FormGroup, FormControlLabel, Checkbox } from "@mui/material";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import InputTextBox from "../Signup/InputTextBox";
 import classes from "../Signup/Signup.module.css";
 import FacebookIcon from "@mui/icons-material/Facebook";
-import { useHistory } from "react-router-dom";
 import axios from "axios";
 
 const Login = ({ getMessage, setNavUrl }) => {
@@ -22,14 +21,14 @@ const Login = ({ getMessage, setNavUrl }) => {
 
   const login = async() => {
     const username = inputs.username,
-      password = inputs.password;
+    password = inputs.password;
     await axios({
       method: "POST",
       url: "http://localhost:5000/login",
       data: {
-        username: username,
-        password: password,
-        rememberMe : rememberMe
+        username,
+        password,
+        rememberMe
       },
       withCredentials: true,
       
@@ -39,6 +38,8 @@ const Login = ({ getMessage, setNavUrl }) => {
       splittedMsg && splittedMsg[0].includes("success") ? history.replace("/") : history.replace("/login")
     });
   };
+
+  console.log(document.cookie);
 
   return (
     <React.Fragment>
