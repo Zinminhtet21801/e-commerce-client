@@ -9,7 +9,7 @@ import LeftDrawer from "./Drawer/Drawer";
 
 
 
-const MyAccount = (props) => {
+const MyAccount = ({getMessage}) => {
   const [urlLink, setUrlLink] = useState("/myAccount");
   const [urlShrink, setUrlShrink] = useState(false);
 
@@ -107,7 +107,7 @@ const MyAccount = (props) => {
               }`}
             >
               {urlLink.includes("myAccount") ? (
-                <AccountSegment />
+                <AccountSegment getMessage={getMessage} />
               ) : (
                 <OrderHistorySegment />
               )}

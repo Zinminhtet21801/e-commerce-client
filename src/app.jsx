@@ -26,9 +26,9 @@ const App = () => {
   const [username, setUsername] = useState(() => "");
   const [url, setUrl] = useState("");
   const [cookieExists, setCookieExists] = useState(()=> document.cookie ? document.cookie : false);
-
   useEffect(() => {
     const getUsername = async () => {
+      console.log("UISer");
       const cookie = getCookie("rememberMe");
       await axios({
         method: "get",
@@ -45,6 +45,7 @@ const App = () => {
     };
 
     const getSessionID = async () => {
+      console.log("SESSION");
       await axios({
         method: "get",
         url: "http://localhost:5000/users/session",
@@ -52,6 +53,7 @@ const App = () => {
       }).then(
         (res) =>
           {
+            console.log(res.data);
           return res.data &&
           username !== res.data.name &&
           (setUsername(res.data.name), setCookieExists(true))
@@ -128,7 +130,9 @@ const App = () => {
           <Route path={`/category/:category/:id`}>
             <ItemDetail location={`/category/:category/:id`} onAdd={onAdd} />
           </Route>
-          <Route path="/myAccount" component={MyAccount} />
+          <Route path="/myAccount" >
+            <MyAccount getMessage={getMessage} />
+          </Route>
           <Route path="/cart">
             <Cart cartItems={cartItems} />
           </Route>

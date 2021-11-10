@@ -5,7 +5,9 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { useState } from "react";
 
 const InputTextField = ({ id, data, title, pwdToggle, onType, onFocus }) => {
-  const [editUserData, setEditUserData] = useState("");
+  const [editUserData, setEditUserData] = useState(title !== "password" && {
+     [title]: data
+  });
   const [pwdToggler, setPwdToggler] = useState(false);
   const [isTouched, setIsTouched] = useState(false);
   const inputChangeHandler = (event) => {
@@ -16,7 +18,7 @@ const InputTextField = ({ id, data, title, pwdToggle, onType, onFocus }) => {
   const onFocusHandler = (event) =>{
     onFocus(event.target.id)
   }
-
+  console.log({title}, {data});
   return (
     <Box
       sx={{
@@ -28,10 +30,11 @@ const InputTextField = ({ id, data, title, pwdToggle, onType, onFocus }) => {
         fullWidth
         type={title !== "password" ? "text" : (pwdToggler ? "text" : "password")}
         id={id}
-        placeholder={title === "password" && data}
+        placeholder={title !== "password" ? "" : data}
         size="small"
         onChange={inputChangeHandler}
-        value={editUserData ? editUserData : data}
+        // value={title !== "password" ? editUserData[title] : ""}
+        value={editUserData[title]}
         onFocus={onFocusHandler}
         endAdornment={
           title === "password" && (

@@ -73,6 +73,10 @@ const AccountSegment = ({ getMessage }) => {
         newPwd: editUserData.newPwd,
         comfirmPwd: editUserData.comfirmPwd
       }
+    }).then((res) => {
+      getMessage(res.data, true)
+      const splittedMsg = res.data && res.data.split("|");
+      splittedMsg && splittedMsg[0].includes("success") ? history.replace("/") : history.replace("/myAccount")
     })
   }
 
